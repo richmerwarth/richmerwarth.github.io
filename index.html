@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title>Cube Spore</title>
+    <style>
+        body {
+            margin: 0;
+            /* background-color: #F2E2B8; */
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="js/three.js"></script>
+
+    <script src="js/shaders/CopyShader.js"></script>
+    <script src="js/shaders/AfterimageShader.js"></script>
+
+    <script src="js/postprocessing/EffectComposer.js"></script>
+    <script src="js/postprocessing/RenderPass.js"></script>
+    <script src="js/postprocessing/MaskPass.js"></script>
+    <script src="js/postprocessing/ShaderPass.js"></script>
+    <script src="js/postprocessing/AfterimagePass.js"></script>
+
+
+    <script>
+        // Establish basics:
+        var composer;
+        var afterimagePass;
+        var params = {
+            enable: false,
+            decay: 0.75
+        };
+
+
+        var coreItems = new Array();
+        var coreParams = {
+            numItems: 1,
+            speeds: new Array(),
+            speedMultiplier: 16,
+            tumbleMultiplier: 0,
+            coreRadiusMin: 0,
+            coreRadiusMax: 0,
+            sizeMin: 3,
+            sizeMax: 3
+        };
+
+
+        var spineItems = new Array();
+        var spineParams = {
+            numItems: 256,
+            speeds: new Array(),
+            speedMultiplier: 5,
+            tumbleMultiplier: 8,
+            coreRadiusMin: 1.0,
+            coreRadiusMax: 1.5,
+            sizeMin: 0.3,
+            sizeMax: 0.6
+        };
+
+
+
+        // var colors = new Array(0x181f12, 0x526346, 0x83855e, 0xe3e3bc, 0xaee0f5); //DearYou
+        var colors = new Array(0xf7f7f2, 0xa3cfbd, 0xf0bc4d, 0xd15145, 0x26201e); //OthergroundPizzaParty
+
+        var scene = new THREE.Scene();
+        // scene.fog = new THREE.Fog(0xffffff, 4, 8);
+
+        scene.background = new THREE.Color(0xffffff);
+        var camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 8;
+
+        var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        //
+
+
+        function init() {
+            console.log("init()");
+            makeCore(coreParams);
+            makeSpines(spineParams);
+        }
+
+        function makeCore(paramsObj) {
+            console.log("makeCore()");
+            for (var i = 0; i < paramsObj.numItems; i++) {
+
+                var mySize = paramsObj.sizeMin + (Math.random()*(paramsObj.sizeMax-paramsObj.sizeMin));
+                var myRadialOffset = paramsObj.coreRadiusMin + (Math.random()*(paramsObj.coreRadiusMax-paramsObj.coreRadiusMin));// + mySize;
+
+                //set speeds
+                paramsObj.speeds[i] = new Object();
+                paramsObj.speeds[i].x = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].y = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].z = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].x2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].y2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].z2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+
+                coreItems[i] = new THREE.Object3D;
+                scene.add(coreItems[i]);
+
+                coreItems[i].myName = "coreItem_" + i;
+
+                // var myGeo = new THREE.SphereGeometry(mySize, 32, 32);
+                var myGeo = new THREE.SphereGeometry(mySize, 2, 2);
+                
+                // var myColor = colors[Math.floor(Math.random() * (colors.length))];
+                var myColor = 0x000000;
+
+                var myMat = new THREE.MeshBasicMaterial({ color: myColor, side: THREE.DoubleSide, wireframe: false });
+
+                coreItems[i].art = new THREE.Mesh(myGeo, myMat);
+                
+                // var myScale = 0.125 + Math.random()*1;
+                // coreItems[i].art.scale.set(myScale, 1, myScale);
+                
+                coreItems[i].add(coreItems[i].art);
+
+                randomizePosition(coreItems[i], true);
+                coreItems[i].art.position.y = myRadialOffset;
+            }
+        }
+
+
+
+
+
+        function makeSpines(paramsObj) {
+            console.log("makeSpines()");
+            for (var i = 0; i < paramsObj.numItems; i++) {
+
+                var mySize = paramsObj.sizeMin + (Math.random()*(paramsObj.sizeMax-paramsObj.sizeMin));
+                var myRadialOffset = paramsObj.coreRadiusMin + (Math.random()*(paramsObj.coreRadiusMax-paramsObj.coreRadiusMin)) + mySize;
+
+                //set speeds
+                paramsObj.speeds[i] = new Object();
+                paramsObj.speeds[i].x = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].y = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].z = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].x2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].y2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].z2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+
+                spineItems[i] = new THREE.Object3D;
+                scene.add(spineItems[i]);
+
+                spineItems[i].myName = "spineItem_" + i;
+
+                var myGeo = new THREE.SphereGeometry(mySize, 6, 4);
+                
+
+                var myColor = colors[Math.floor(Math.random() * (colors.length))];
+
+                var myMat = new THREE.MeshBasicMaterial({ color: myColor, side: THREE.DoubleSide, wireframe: false });
+
+                spineItems[i].art = new THREE.Mesh(myGeo, myMat);
+                
+                var myScale = 0.125 + Math.random()/4;
+                spineItems[i].art.scale.set(myScale, 1, myScale);
+                
+                spineItems[i].add(spineItems[i].art);
+
+                randomizePosition(spineItems[i], true);
+                spineItems[i].art.position.y = myRadialOffset;
+            }
+        }
+
+
+
+
+
+        function getRandomSpeed(speedMultiplier) {
+            return (Math.random() * speedMultiplier / 1000);
+        }
+
+        function randomizePosition(target, test) {
+            // console.log("randomizePosition: "+target.myName);
+            var offsets = new Object();
+            offsets.x = Math.random() * 360;
+            offsets.y = Math.random() * 360;
+            offsets.z = Math.random() * 360;
+            if (test == true) {
+                offsets.x2 = Math.random() * 360;
+                offsets.y2 = Math.random() * 360;
+                offsets.z2 = Math.random() * 360;
+            } else {
+                offsets.x2 = 0;
+                offsets.y2 = 0;
+                offsets.z2 = 0;
+            }
+
+            spinCube(target, offsets);
+        }
+
+
+        // var core_geom = new THREE.SphereGeometry(coreRadius, 32, 32);
+        // var core_mat = new THREE.MeshBasicMaterial({ color: 0xdddddd });
+        // var core = new THREE.Mesh(core_geom, core_mat);
+        // scene.add( core );
+
+
+
+
+
+
+        composer = new THREE.EffectComposer(renderer);
+        composer.addPass(new THREE.RenderPass(scene, camera));
+        afterimagePass = new THREE.AfterimagePass(params.decay);
+        afterimagePass.renderToScreen = true;
+        composer.addPass(afterimagePass);
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // do animation stuff:
+            for (var i = 0; i < coreParams.numItems; i++) {
+                // spinCube(coreItems[i], coreParams.speeds[i]);
+            }
+
+
+            for (var i = 0; i < spineParams.numItems; i++) {
+                spinCube(spineItems[i], spineParams.speeds[i]);
+            }
+            
+
+            scene.rotation.y += 0.005;
+            scene.rotation.z += 0.0025;
+
+
+            if (params.enable) {
+                composer.render();
+            } else {
+                renderer.render(scene, camera);
+            }
+        }
+
+        function spinCube(target, speeds) {
+            target.rotation.x += speeds.x;
+            target.rotation.y += speeds.y;
+            target.rotation.z += speeds.z;
+
+            // target.art.rotation.x += speeds.x2;
+            target.art.rotation.y += speeds.y2;
+            // target.art.rotation.z += speeds.z2;
+
+
+        }
+
+        // function translateCube(target, amount, sa) {
+        //     // console.log("translateCube("+target+", "+amount);
+        //     // console.log(target.geometry);
+        //     target.art.position.y = amount;
+        //     target.art.scale.set(sa, sa, sa);
+        // }
+
+
+        init();
+        animate();
+
+        // function getMousePos(p) {
+        //     // console.log(p.pageX+", "+p.pageY);
+
+        //     // camera.fov = 30 + p.pageY / 10;
+        //     // camera.updateProjectionMatrix();
+        //     var amount = 0.25 + p.pageY / 400;
+        //     var sa = 1.0 + p.pageX / 100;
+        //     for (var i = 0; i < numSpines; i++) {
+        //         translateCube(spines[i], amount, sa);
+        //     }
+        // }
+        // addEventListener('mousemove', getMousePos, false);
+
+    </script>
+</body>
+
+</html>
