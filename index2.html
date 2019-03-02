@@ -25,24 +25,9 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" type="text/css" href="css/base.css">
-
-    <style>
-        body {
-            margin: 0;
-            background-color: #ffffff;
-        }
-
-    </style>
 </head>
 
 <body>
-
-
-        <div class="footer">
-            <a href="https://www.merwarth.com/">rich merwarth</a> | 2018
-        </div>
-
-
     <script src="GSAP_src/minified/TweenMax.min.js"></script>
     <script src="js/three.js"></script>
 
@@ -90,15 +75,14 @@
         var scene = new THREE.Scene();
 
         scene.background = new THREE.Color(0xffffff);
-        // scene.background = new THREE.Color(0x000000);
-        var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight * 0.95, 0.1, 1000);
         camera.position.z = 8;
 
         var renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: false
         });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(window.innerWidth, window.innerHeight * 0.95);
         renderer.setPixelRatio(window.devicePixelRatio);
         document.body.appendChild(renderer.domElement);
 
@@ -111,7 +95,7 @@
             for (var i = 0; i < spineParams.numItems; i++) {
 
                 var target = spineItems[i].art.position;
-                TweenMax.to(target, 4.0, {
+                TweenMax.to(target, 2.0, {
                     y: 3 + Math.random() * 4,
                     ease: Quad.easeInOut,
                     delay: i / 500,
@@ -294,6 +278,9 @@
         animate();
     </script>
 
+    <div class="footer">
+        <a href="https://www.merwarth.com/">rich merwarth</a> | 2018
+    </div>
 </body>
 
 </html>
