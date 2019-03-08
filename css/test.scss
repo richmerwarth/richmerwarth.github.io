@@ -46,7 +46,7 @@ body {
     // padding: 50px;
 }
 
-.contentcolumn{
+.contentcolumn {
     // background-color: $red;
     margin-right: $pagemargins;
     margin-left: $pagemargins;
@@ -55,30 +55,49 @@ body {
 
 .header {
     background-color: $transblack;
-    // width: auto;
-    // padding: 1em 0.6em;
-    // font-size: 2.6em;
-    // line-height: 0.5em;
-    // font-weight: 300;
     min-height: 20px;
-    height: 1em;
     margin: auto;
     margin-top: 10vh;
+
+    .content{
+        padding: 2vw;
+        font-weight: 300;
+        font-size: 3vw;
+    }
 }
 
-.divider{
-    margin-top:4vh;
-    margin-bottom:4hv;
+
+
+.divider {
+    margin-top: 4vh;
+    margin-bottom: 4hv;
     background-color: $offwhite;
     height: 2px;
 }
 
-// .header .content {
-//     width: auto;
-//     height: 0.6em;
-// }
 
-// .header b {
-//     font-size: 1.25em;
-//     font-weight: 900;
-// }
+// breakpoints:
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    // 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    //
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    //
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    //
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    //
+}
