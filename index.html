@@ -4,16 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <title> rich merwarth | richmerwarth.github.io </title>
-    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico"/>
-    <meta property="og:site_name" content=" rich merwarth | richmerwarth.github.io "/>
-    <meta property="og:title" content=" rich merwarth | richmerwarth.github.io "/>
-    <meta property="og:url" content="https://richmerwarth.github.io/"/>
-    <meta property="og:type" content="website"/>
-    <meta itemprop="name" content=" rich merwarth | richmerwarth.github.io"/>
-    <meta itemprop="url" content="https://richmerwarth.github.io/"/>
-    <meta name="twitter:title" content=" rich merwarth | richmerwarth.github.io"/>
-    <meta name="twitter:url" content="https://richmerwarth.github.io/"/>
-    <meta name="twitter:card" content="summary"/>
+    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
+    <meta property="og:site_name" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:title" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:url" content="https://richmerwarth.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta itemprop="name" content=" rich merwarth | richmerwarth.github.io" />
+    <meta itemprop="url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:title" content=" rich merwarth | richmerwarth.github.io" />
+    <meta name="twitter:url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:card" content="summary" />
     <meta name="description" content="" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -24,53 +24,275 @@
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            background-color: #ffffff;
-        }
+    <!-- fonts & css -------------------------------------------- -->
+    <!-- fonts & css -------------------------------------------- -->
 
-    </style>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,900" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,700" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Vampiro+One" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="css/test.css">
+
 </head>
 
 <body>
 
+    <div class="contentcontainer">
+        <div class="contentcolumn">
 
-        <!-- <div class="footer">
+            <div class="header">
+                <div class="content">richmerwarth.github.io</div>
+            </div>
+
+            <div class="divider"></div>
+            
+            <!-- <div class="nav">
+                            <div class="navitem"><a href="crystal_orb.html">lorem ipsum</a></div>
+                            <div class="navitem"><a href="crystal_orb.html">dolor sit amet</a></div>
+                            <div class="navitem"><a href="crystal_orb.html">consectetur</a></div>
+                            <div class="navitem"><a href="crystal_orb.html">adipiscing elit</a></div>
+                            <div class="navitem"><a href="crystal_orb.html">Integer at pharetra erat</a></div>
+                        </div>
+            
+                        <div class="about">
+                            <div class="aboutblurb">Vivamus ac varius nibh, ac pellentesque turpis. Nam ut mauris orci. Sed purus tortor, condimentum et turpis in, scelerisque vulputate nunc.</div>
+                            <div class="aboutlinks">
+                                <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
+                                <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
+                                <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
+                            </div>
+                        </div> -->
+
+            <!-- <div class="bar red"></div> -->
+        </div>
+    </div>
+
+    <script src="js/three.js"></script>
+
+    <script src="js/shaders/CopyShader.js"></script>
+    <script src="js/shaders/AfterimageShader.js"></script>
+
+    <script src="js/postprocessing/EffectComposer.js"></script>
+    <script src="js/postprocessing/RenderPass.js"></script>
+    <script src="js/postprocessing/MaskPass.js"></script>
+    <script src="js/postprocessing/ShaderPass.js"></script>
+    <script src="js/postprocessing/AfterimagePass.js"></script>
+
+
+
+
+
+
+
+    <script>
+        // Establish basics:
+        var composer;
+        var afterimagePass;
+        var params = {
+            enable: false,
+            decay: 0.95
+        };
+
+        var coreItems = new Array();
+        var coreParams = {
+            numItems: 16,
+            speeds: new Array(),
+            speedMultiplier: 0.25,
+            tumbleMultiplier: 2,
+            coreRadiusMin: 0.0,
+            coreRadiusMax: 0.0,
+            sizeMin: 10,
+            sizeMax: 10.0
+        };
+
+
+        var worldParams = {
+            rotX: -0.000,
+            rotY: 0.005,
+            rotZ: -0.000
+        }
+
+
+
+        // var colors = new Array(0x181f12, 0x526346, 0x83855e, 0xe3e3bc, 0xaee0f5); //DearYou
+        // var colors = new Array(0xf7f7f2, 0xa3cfbd, 0xf0bc4d, 0xd15145, 0x26201e); //OthergroundPizzaParty
+        var colors = new Array(0x000000, 0x111111, 0x222222, 0x444444); 
+        // var colors = new Array(0xa3cfbd, 0xd15145);
+        // var colors = new Array(0xdddddd, 0xeeeeee, 0x000000);
+
+        var scene = new THREE.Scene();
+        var world = new THREE.Object3D;
+        scene.add(world);
+
+        scene.background = new THREE.Color(0xffffff);
+        var camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 20;
+        camera.position.y = 3;
+
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        //
+
+
+        function init() {
+            console.log("init()");
+            makeCore(coreParams);
+            addLights();
+        }
+
+        function makeCore(paramsObj) {
+            console.log("makeCore()");
+            for (var i = 0; i < paramsObj.numItems; i++) {
+
+                var mySize = paramsObj.sizeMin + (Math.random() * (paramsObj.sizeMax - paramsObj.sizeMin));
+                var myRadialOffset = paramsObj.coreRadiusMin + (Math.random() * (paramsObj.coreRadiusMax - paramsObj.coreRadiusMin)); // + mySize;
+
+                //set speeds
+                paramsObj.speeds[i] = new Object();
+                paramsObj.speeds[i].x = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].y = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].z = getRandomSpeed(paramsObj.speedMultiplier);
+                paramsObj.speeds[i].x2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].y2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+                paramsObj.speeds[i].z2 = getRandomSpeed(paramsObj.speedMultiplier) * paramsObj.tumbleMultiplier;
+
+                coreItems[i] = new THREE.Object3D;
+                world.add(coreItems[i]);
+
+                coreItems[i].myName = "coreItem_" + i;
+
+                // var myGeo = new THREE.SphereGeometry(mySize, 4, 2);
+                var myGeo = new THREE.IcosahedronGeometry(mySize, 0);
+
+                var myColor = colors[Math.floor(Math.random() * (colors.length))];
+                // var myColor = 0x000000;
+                // var myColor = 0xffffff;
+
+                var myMat = new THREE.MeshBasicMaterial({
+                    color: myColor,
+                    side: THREE.DoubleSide,
+                    wireframe: false,
+                    flatShading: true,
+                    transparent: true,
+                    opacity: 1.0,
+                    specular: 0xffffff,
+                    shininess: 100
+                });
+
+                coreItems[i].art = new THREE.Mesh(myGeo, myMat);
+
+                // var myScale = 0.125 + Math.random()*1;
+                // coreItems[i].art.scale.set(myScale, 1, myScale);
+
+                coreItems[i].add(coreItems[i].art);
+
+                randomizePosition(coreItems[i], true);
+                coreItems[i].art.position.y = myRadialOffset;
+            }
+        }
+
+
+        function addLights() {
+            var point1 = new THREE.PointLight(0xA3CFBD, 1, 60);
+            var point2 = new THREE.PointLight(0xffffff, 1, 60);
+            var point3 = new THREE.PointLight(0xD15145, 1, 60);
+
+            point1.position.set(0, -30, 30);
+            point2.position.set(0, 30, 0);
+            point3.position.set(0, 30, 30);
+
+            point1.castShadow = false;
+            point1.castShadow = false;
+            point3.castShadow = false;
+
+            scene.add(point1);
+            scene.add(point2);
+            scene.add(point3);
+        }
+
+
+
+        function getRandomSpeed(speedMultiplier) {
+            return (Math.random() * speedMultiplier / 1000);
+        }
+
+        function randomizePosition(target, test) {
+            // console.log("randomizePosition: "+target.myName);
+            var offsets = new Object();
+            offsets.x = Math.random() * 360;
+            offsets.y = Math.random() * 360;
+            offsets.z = Math.random() * 360;
+            if (test == true) {
+                offsets.x2 = Math.random() * 360;
+                offsets.y2 = Math.random() * 360;
+                offsets.z2 = Math.random() * 360;
+            } else {
+                offsets.x2 = 0;
+                offsets.y2 = 0;
+                offsets.z2 = 0;
+            }
+
+            spinCube(target, offsets);
+        }
+
+
+
+
+        composer = new THREE.EffectComposer(renderer);
+        composer.addPass(new THREE.RenderPass(scene, camera));
+        afterimagePass = new THREE.AfterimagePass(params.decay);
+        afterimagePass.renderToScreen = true;
+        composer.addPass(afterimagePass);
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // do animation stuff:
+            for (var i = 0; i < coreParams.numItems; i++) {
+                spinCube(coreItems[i], coreParams.speeds[i]);
+            }
+
+            if (params.enable) {
+                composer.render();
+            } else {
+                renderer.render(scene, camera);
+            }
+        }
+
+        function spinCube(target, speeds) {
+            target.rotation.x += speeds.x;
+            target.rotation.y += speeds.y;
+            target.rotation.z += speeds.z;
+
+            target.art.rotation.x += speeds.x2;
+            target.art.rotation.y += speeds.y2;
+            target.art.rotation.z += speeds.z2;
+
+
+        }
+
+        init();
+        animate();
+    </script>
+
+
+
+    <!-- <div class="footer">
             <a href="https://www.merwarth.com/">rich merwarth</a> | 2018
         </div> -->
 
 
-        <div class="contentcontainer">
-            
-            <div class="header black">
-                <!-- <div class="content">foo</div> -->
-                <div class="content"><b>richmerwarth</b>.github.io</div>
-            </div>
-            
-            <!-- <div class="nav">
-                <div class="navitem"><a href="crystal_orb.html">lorem ipsum</a></div>
-                <div class="navitem"><a href="crystal_orb.html">dolor sit amet</a></div>
-                <div class="navitem"><a href="crystal_orb.html">consectetur</a></div>
-                <div class="navitem"><a href="crystal_orb.html">adipiscing elit</a></div>
-                <div class="navitem"><a href="crystal_orb.html">Integer at pharetra erat</a></div>
-            </div>
-
-            <div class="about">
-                <div class="aboutblurb">Vivamus ac varius nibh, ac pellentesque turpis. Nam ut mauris orci. Sed purus tortor, condimentum et turpis in, scelerisque vulputate nunc.</div>
-                <div class="aboutlinks">
-                    <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
-                    <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
-                    <div class="linkitem"><a href="http://www.google.com">linky linky</a></div>
-                </div>
-            </div> -->
-
-        <!-- <div class="bar red"></div> -->
-
-        </div>
 
 
 </body>

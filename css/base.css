@@ -1,12 +1,10 @@
 body {
     margin: 0;
     background-color: #FFFFFF;
-
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 24px;
     font-weight: 400;
     line-height: 20px;
-
     color: #26201E;
 }
 
@@ -15,90 +13,44 @@ canvas {
     height: 95%;
 }
 
-.contentcontainer{
-    padding:3em;
+.contentcontainer {
+    padding: 3em;
 }
 
-.header{
+.header {
     width: auto;
     padding: 1em 0.6em;
-
     font-size: 2.6em;
     line-height: 0.5em;
-
     font-weight: 300;
 }
 
-.header .content{
+.header .content {
     width: auto;
     height: 0.6em;
 }
 
-.header b{
+.header b {
     font-size: 1.25em;
     font-weight: 900;
 }
 
-.about{
+.about {}
 
-    transform: rotate(-8deg);
-    margin-top: 40px;
-    margin-left: -40px;
-    margin-right: -40px;
-    padding: 10px;
-    padding-left: 80px;
-    padding-bottom: 40px;
+.aboutblurb {}
 
-    position: relative;
-}
+.nav {}
 
-.aboutblurb{
-    max-width: 400px;
-    margin-bottom: 20px;
-    margin-right:40px;
-}
+.aboutlinks {}
 
-.nav{
-    transform: rotate(-3deg);
-    margin-top: -20px;
-    margin-left: 40px;
-    margin-right: -40px;
-    padding: 10px;
-    padding-top: 30px;
-    line-height: 30px;
-    mix-blend-mode: multiply;
-    /* max-width: 500px; */
-    height: 75vh;
-}
+.bar {}
 
-.nav a{
-    color: #ffffff;
-}
-
-
-
-.aboutlinks{
-    line-height: 30px;
-}
-
-
-.bar{
-    transform: rotate(-12deg);
-    margin-top: 20px;
-    margin-left: 20px;
-    padding: 20px;
-    line-height: 30px;
-    mix-blend-mode: multiply;
-}
-
-.footer{
+.footer {
     /* color: #666666; */
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
-
     z-index: 100;
-
     position: absolute;
     right: 0;
     bottom: 0;
@@ -107,31 +59,31 @@ canvas {
     /* background-color: rgba(255,255,255,0.9); */
     background-color: #ffffff;
     text-align: center;
-
 }
 
-a{
+a {
     text-decoration: none;
-    color: #D15145;
 }
+
 a:hover {
     /* color: #D15145; */
     text-decoration: underline;
 }
 
-
-.yellow{
+.yellow {
     background-color: #F0BC4D;
 }
-.teal{
+
+.teal {
     background-color: #A3CFBD;
 }
-.red{
+
+.red {
     background-color: #D15145;
 }
 
-.black{
+.black {
     /* background-color: #000000; */
-    background-color: rgba(0,0,0,0.6);
-    color:#ffffff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
 }
