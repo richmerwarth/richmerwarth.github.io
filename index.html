@@ -29,8 +29,9 @@
     <!-- fonts & css -------------------------------------------- -->
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,900" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,700" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,800" rel="stylesheet">
         <!-- <link href="https://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Vampiro+One" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="css/test.css">
@@ -97,14 +98,15 @@
 
         var coreItems = new Array();
         var coreParams = {
-            numItems: 16,
+            numItems: 3,
             speeds: new Array(),
-            speedMultiplier: 0.25,
+            speedMultiplier: 1,
             tumbleMultiplier: 2,
             coreRadiusMin: 0.0,
             coreRadiusMax: 0.0,
             sizeMin: 10,
-            sizeMax: 10.0
+            sizeMax: 10.0,
+
         };
 
 
@@ -118,7 +120,8 @@
 
         // var colors = new Array(0x181f12, 0x526346, 0x83855e, 0xe3e3bc, 0xaee0f5); //DearYou
         // var colors = new Array(0xf7f7f2, 0xa3cfbd, 0xf0bc4d, 0xd15145, 0x26201e); //OthergroundPizzaParty
-        var colors = new Array(0x000000, 0x111111, 0x222222, 0x444444); 
+        var colors = new Array(0x444444, 0x222222, 0x000000);
+        // var colors = new Array(0x000000, 0x111111, 0x222222, 0x333333, 0xffffff); 
         // var colors = new Array(0xa3cfbd, 0xd15145);
         // var colors = new Array(0xdddddd, 0xeeeeee, 0x000000);
 
@@ -127,7 +130,7 @@
         scene.add(world);
 
         scene.background = new THREE.Color(0xffffff);
-        var camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 20;
         camera.position.y = 3;
 
@@ -171,9 +174,13 @@
                 coreItems[i].myName = "coreItem_" + i;
 
                 // var myGeo = new THREE.SphereGeometry(mySize, 4, 2);
-                var myGeo = new THREE.IcosahedronGeometry(mySize, 0);
+                var myGeo = new THREE.TetrahedronGeometry(mySize, 3);
+                // var myGeo = new THREE.IcosahedronGeometry(mySize, 2);
+                
+                var ci =  i % colors.length;
+                var myColor = colors[ci];
 
-                var myColor = colors[Math.floor(Math.random() * (colors.length))];
+                // var myColor = colors[Math.floor(Math.random() * (colors.length))];
                 // var myColor = 0x000000;
                 // var myColor = 0xffffff;
 
@@ -197,6 +204,8 @@
 
                 randomizePosition(coreItems[i], true);
                 coreItems[i].art.position.y = myRadialOffset;
+                coreItems[i].position.x = -0.5 +i;
+                coreItems[i].position.y = 0.25 -i/2;
             }
         }
 
