@@ -1,89 +1,104 @@
 body {
-    margin: 0;
-    background-color: #FFFFFF;
-    font-family: "Roboto", sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #26201E;
+  margin: 0px;
+  background-color: #000000;
+  font-family: Open Sans, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #f7f7f2;
 }
 
-canvas {
-    width: 100%;
-    height: 95%;
+.nav {
+  margin-top: 5vw;
+  margin-bottom: 5vw;
 }
 
 .contentcontainer {
-    padding: 3em;
+  z-index: 10;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.contentcontainer a {
+  text-decoration: none;
+  color: #f7f7f2;
+}
+
+.contentcontainer a:visited {
+  color: #f7f7f2;
+}
+
+.contentcontainer a:hover {
+  color: #000000;
+  background-color: #f7f7f2;
+}
+
+.contentcolumn {
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 .header {
-    width: auto;
-    padding: 1em 0.6em;
-    font-size: 2.6em;
-    line-height: 0.5em;
-    font-weight: 300;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-height: 20px;
+  margin: auto;
+  margin-top: 10vh;
 }
 
 .header .content {
-    width: auto;
-    height: 0.6em;
+  padding: 2vw;
+  font-weight: 300;
+  font-size: 3vw;
 }
 
-.header b {
-    font-size: 1.25em;
-    font-weight: 900;
+.navitem {
+  padding: 2vw;
+  font-weight: 300;
+  font-size: 3vw;
 }
 
-.about {}
-
-.aboutblurb {}
-
-.nav {}
-
-.aboutlinks {}
-
-.bar {}
+.divider {
+  margin-top: 1vh;
+  margin-bottom: 2hv;
+  background-color: #f7f7f2;
+  height: 2px;
+}
 
 .footer {
-    /* color: #666666; */
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    z-index: 100;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0.5rem;
-    /* background-color: rgba(255,255,255,0.9); */
-    background-color: #ffffff;
-    text-align: center;
+  /* color: #666666; */
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  /* background-color: rgba(255,255,255,0.9); */
+  background-color: #ffffff;
+  text-align: center;
+  color: #000000;
 }
 
-a {
-    text-decoration: none;
+.footer a {
+  color: #D15145;
 }
 
-a:hover {
-    /* color: #D15145; */
-    text-decoration: underline;
+.backBtn {
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  position: absolute;
+  top: 5vh;
+  left: 0px;
+  width: 32px;
+  height: 32px;
 }
 
-.yellow {
-    background-color: #F0BC4D;
-}
-
-.teal {
-    background-color: #A3CFBD;
-}
-
-.red {
-    background-color: #D15145;
-}
-
-.black {
-    /* background-color: #000000; */
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #ffffff;
-}
+/* Extra small devices (phones, 600px and down) */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Medium devices (landscape tablets, 768px and up) */
+/* Large devices (laptops/desktops, 992px and up) */
+/* Extra large devices (large laptops and desktops, 1200px and up) */
