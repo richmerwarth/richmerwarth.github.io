@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> rich merwarth | richmerwarth.github.io </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
+    <meta property="og:site_name" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:title" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:url" content="https://richmerwarth.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta itemprop="name" content=" rich merwarth | richmerwarth.github.io" />
+    <meta itemprop="url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:title" content=" rich merwarth | richmerwarth.github.io" />
+    <meta name="twitter:url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="description" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+
+<body>
+    <script src="js/three.js"></script>
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+
+
+    <script>
+        // Establish basics:
+
+        var spineItems = new Array();
+        var spineParams = {
+            numItems: 1280,
+            speeds: new Array(),
+            speedMultiplier: 0,
+            tumbleMultiplier: 0,
+            coreRadiusMin: 0,
+            coreRadiusMax: 0,
+            sizeMin: 6,
+            sizeMax: 6
+        };
+
+
+        // var colors = new Array(0xd15145, 0xd15145); //OthergroundPizzaParty
+        // var colors = new Array(0x000000, 0x000000); //OthergroundPizzaParty
+
+        var coral = 0xd15145;
+        var black = 0x26201e;
+        var yellow = 0xf0bc4d;
+        var offwhite = 0xf7f7f2;
+        var mint = 0xa3cfbd;
+
+        var colors = new Array(offwhite, mint, yellow, yellow, yellow, coral, black); //OthergroundPizzaParty
+        // var colors = new Array(0xd15145, 0xf7f7f2, 0xa3cfbd, 0xf0bc4d); //OthergroundPizzaParty
+        // var colors = new Array(0xffee00, 0x00DDFF, 0xff00dd, 0x000000); //OthergroundPizzaParty
+
+        var bgcolor = yellow;
+
+        var scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(bgcolor, 9, 16);
+
+        var world = new THREE.Object3D;
+        scene.add(world);
+
+
+
+        scene.background = new THREE.Color(bgcolor);
+        var camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.x = 0;
+        camera.position.y = 20;
+        camera.position.z = 4
+
+        camera.lookAt(world.position);
+
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        //
+
+
+        function init() {
+            console.log("init()");
+            makeSpines(spineParams);
+            addLights();
+        }
+
+
+        function makeSpines(paramsObj) {
+            console.log("makeSpines()");
+
+            // var rotSteps = (Math.PI*2/paramsObj.numItems)*10;
+            var rotSteps = (Math.PI * 2) * 19 / paramsObj.numItems;
+            // var rotSteps = Math.PI * 2 / paramsObj.numItems;
+            // var rotSteps = (Math.PI * 2) * (1/paramsObj.numItems);
+
+
+            for (var i = 0; i < paramsObj.numItems; i++) {
+
+                var mySize = paramsObj.sizeMin + (Math.random() * (paramsObj.sizeMax - paramsObj.sizeMin));
+                var myRadialOffset = paramsObj.coreRadiusMin + (Math.random() * (paramsObj.coreRadiusMax - paramsObj.coreRadiusMin)) +
+                    mySize;
+
+
+                spineItems[i] = new THREE.Object3D;
+                world.add(spineItems[i]);
+
+                spineItems[i].myName = "spineItem_" + i;
+
+                var myGeo = new THREE.SphereGeometry(mySize, 4, 8);
+
+                if (colors.length == 0) {
+                    myIndex = 0;
+                } else {
+                    var myIndex = i % colors.length;
+                }
+                var myColor = colors[myIndex];
+
+                // if(i==0){
+                //     myColor = 0x00aaFF;
+                // }
+
+                // var myMat = new THREE.MeshPhongMaterial({ 
+                //     color: myColor, 
+                //     side: THREE.DoubleSide, 
+                //     wireframe: false, 
+                //     flatShading: true,
+                //     transparent: false,
+                //     opacity: 1,
+                //     specular: 0xffffff,
+                //     shininess: 100 });
+
+                var myMat = new THREE.MeshBasicMaterial({
+                    color: myColor,
+                    side: THREE.DoubleSide,
+                    wireframe: false
+                });
+
+                spineItems[i].art = new THREE.Mesh(myGeo, myMat);
+
+                // var myScale = 0.3;
+                var myScale = 1; //+ Math.random()*0.1;
+                // spineItems[i].art.scale.set(myScale/6, 1, myScale);
+
+                // spineItems[i].art.scale.set(myScale, 1, myScale);
+
+                spineItems[i].art.scale.set(0.125, 1.33, 0.125);
+
+
+                spineItems[i].add(spineItems[i].art);
+
+                // randomizePosition(spineItems[i], true);
+                // spineItems[i].art.position.y = myRadialOffset;
+                // spineItems[i].art.position.x = -1;
+
+                spineItems[i].rotation.y = rotSteps * i;
+                spineItems[i].rotation.z = 0;
+
+                var target = spineItems[i];
+
+                initTweens(target, i, myRadialOffset);
+
+
+
+
+            }
+        }
+
+        function initTweens(target, i, myRadialOffset) {
+            target.rotation.z = 0;
+
+            var offset = 10 / (spineParams.numItems) * i;
+
+            TweenMax.to(target.rotation, 10.0, {
+                z: Math.PI,
+                ease: Quad.easeInOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: myRadialOffset,
+                ease: Quad.easeOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: 0,
+                ease: Quad.easeIn,
+                delay: 7.0 + (offset),
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false,
+                onComplete: repeatTweensA,
+                onCompleteParams: [target, myRadialOffset]
+            });
+
+        }
+
+
+        function repeatTweensA(target, myRadialOffset) {
+            target.rotation.z = 0;
+
+            offset = 0.0;
+
+            TweenMax.to(target.rotation, 10.0, {
+                z: Math.PI,
+                ease: Quad.easeInOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: myRadialOffset,
+                ease: Quad.easeOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: 0,
+                ease: Quad.easeIn,
+                delay: 7.0 + (offset),
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false,
+                onComplete: repeatTweensA,
+                onCompleteParams: [target, myRadialOffset]
+            });
+
+        }
+
+
+
+        function repeatTweensB(target, myRadialOffset) {
+            // target.rotation.z = 0;
+
+            offset = 0.0;
+
+            TweenMax.to(target.rotation, 10.0, {
+                z: 0,
+                ease: Quad.easeInOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: 0 - myRadialOffset,
+                ease: Quad.easeOut,
+                delay: offset,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false
+            });
+
+            TweenMax.to(target.art.position, 3.0, {
+                y: 0,
+                ease: Quad.easeIn,
+                delay: 7.0 + (offset),
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false,
+                onComplete: repeatTweensA,
+                onCompleteParams: [target, myRadialOffset]
+            });
+
+        }
+
+
+
+        function callback(t) {
+            console.log("onComplete: " + t);
+            TweenMax.to(t.position, 3.0, {
+                x: 20,
+                ease: Quad.easeInOut,
+                delay: 0.0,
+                repeat: 0,
+                repeatDelay: 0.0,
+                yoyo: false,
+            });
+        }
+
+        // TweenLite.to(element, 1, {
+        //     left: "100px",
+        //     onComplete: myFunction,
+        //     onCompleteParams: [element, "param2"]
+        // });
+
+
+        function addLights() {
+
+            var point1 = new THREE.PointLight(0xf0bc4d, 1, 60);
+            var point2 = new THREE.PointLight(0xD15145, 1, 60);
+            var point3 = new THREE.PointLight(0xD15145, 1, 60);
+            var point4 = new THREE.PointLight(0xffffff, 1, 20, 2);
+            var point5 = new THREE.PointLight(0xa3cfbd, 1, 20, 2);
+
+            var spot1 = new THREE.SpotLight(0xD15145, 1, 0, Math.PI / 14, 0.5, 0);
+            var spot2 = new THREE.SpotLight(0xD15145, 1, 0, Math.PI / 4, 0.5, 0);
+
+            // SpotLight( color : Integer, intensity : Float, distance : Float, angle : Radians, penumbra : Float, decay : Float )
+            // color - (optional) hexadecimal color of the light. Default is 0xffffff (white).
+            // intensity - (optional) numeric value of the light's strength/intensity. Default is 1.
+
+            // distance - Maximum range of the light. Default is 0 (no limit).
+            // angle - Maximum angle of light dispersion from its direction whose upper bound is Math.PI/2.
+            // penumbra - Percent of the spotlight cone that is attenuated due to penumbra. Takes values between zero and 1. Default is zero.
+            // decay - The amount the light dims along the distance of the light.
+
+
+            point1.position.set(0, 40, -40);
+            point2.position.set(20, 20, -20);
+            point3.position.set(0, 10, -30);
+            point4.position.set(0, 15, 12);
+            point5.position.set(-20, 30, 0);
+
+            spot1.position.set(0, -30, -20);
+            spot2.position.set(0, 20, 30);
+
+            point1.castShadow = false;
+            point1.castShadow = false;
+            point3.castShadow = false;
+            point4.castShadow = false;
+            point5.castShadow = false;
+
+            spot1.castShadow = false;
+            spot2.castShadow = false;
+
+            scene.add(point1);
+            scene.add(point2);
+            scene.add(point3);
+            scene.add(point4);
+            scene.add(point5);
+
+            scene.add(spot1);
+            scene.add(spot2);
+        }
+
+
+
+        function getRandomSpeed(speedMultiplier) {
+            return (Math.random() * speedMultiplier / 1000);
+        }
+
+        function randomizePosition(target, test) {
+            // console.log("randomizePosition: "+target.myName);
+            var offsets = new Object();
+            offsets.x = Math.random() * 360;
+            offsets.y = Math.random() * 360;
+            offsets.z = Math.random() * 360;
+            if (test == true) {
+                offsets.x2 = Math.random() * 360;
+                offsets.y2 = Math.random() * 360;
+                offsets.z2 = Math.random() * 360;
+            } else {
+                offsets.x2 = 0;
+                offsets.y2 = 0;
+                offsets.z2 = 0;
+            }
+
+            spinCube(target, offsets);
+        }
+
+
+
+
+
+
+
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // do animation stuff:
+
+            // world.rotation.x += 0.001;
+            world.rotation.y -= 0.005;
+            // world.rotation.z += 0.003;
+
+            // for (var i = 0; i < spineParams.numItems; i++) {
+            //     spinCube(spineItems[i], spineParams.speeds[i]);
+            // }
+
+            renderer.render(scene, camera);
+        }
+
+        function spinCube(target, speeds) {
+            target.rotation.x += speeds.x;
+            target.rotation.y += speeds.y;
+            target.rotation.z += speeds.z;
+
+            // target.art.rotation.x += speeds.x2;
+            target.art.rotation.y += speeds.y2;
+            // target.art.rotation.z += speeds.z2;
+        }
+
+
+
+        init();
+        animate();
+    </script>
+
+
+    <div class="backBtn"><a href="Javascript:window.history.back()"><img src="img/chevron_back.svg"></a></div>
+
+    <div class="footer">
+        <a href="https://www.merwarth.com/">rich merwarth</a> | 2018
+    </div>
+</body>
+
+</html>
