@@ -109,8 +109,8 @@
         loader.load('obj/arrow.stl', function (geometry) {
 
             var material = new THREE.MeshPhongMaterial({
-                color: 0xffff33,
-                specular: 0x111111,
+                color: 0xFFFFFF,
+                specular: 0xFFFFFF,
                 shininess: 50
             });
             var mesh = new THREE.Mesh(geometry, material);
@@ -122,14 +122,20 @@
             mesh.castShadow = false;
             mesh.receiveShadow = false;
 
-            for(var data in mesh){
-                console.log(data+": "+ mesh[data]);
+            for (var data in mesh) {
+                console.log(data + ": " + mesh[data]);
             }
 
             world.add(mesh);
 
         });
 
+        var ball_geo = new THREE.SphereGeometry(5, 8, 8);
+        var ball_mat = new THREE.MeshBasicMaterial({
+            color: 0xff0000
+        });
+        var ball = new THREE.Mesh(ball_geo, ball_mat);
+        world.add(ball);
 
         ///////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////
