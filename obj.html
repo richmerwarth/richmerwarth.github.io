@@ -122,16 +122,17 @@
             mesh.castShadow = false;
             mesh.receiveShadow = false;
 
-            for (var data in mesh) {
-                console.log(data + ": " + mesh[data]);
-            }
+            // for (var data in mesh) {
+            //     console.log(data + ": " + mesh[data]);
+            // }
 
             world.add(mesh);
             
             var box = new THREE.Box3().setFromObject( mesh );
             var boxsize = new THREE.Vector3();
+            box.getSize(boxsize);
 
-            console.log("box::::::::::: "+  box.min, box.max, box.getSize(boxsize) );
+            console.log("box::::::::::: "+  box.min, box.max, boxsize );
 
         });
 
