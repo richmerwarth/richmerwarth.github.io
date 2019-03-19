@@ -129,7 +129,9 @@
             world.add(mesh);
             
             var box = new THREE.Box3().setFromObject( mesh );
-            console.log("box::::::::::: "+  box.min, box.max, box.getSize() );
+            var boxsize = new THREE.Vector3();
+
+            console.log("box::::::::::: "+  box.min, box.max, box.getSize(boxsize) );
 
         });
 
