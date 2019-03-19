@@ -116,7 +116,7 @@
             var mesh = new THREE.Mesh(geometry, material);
 
             mesh.position.set(0, 0, 0);
-            // mesh.rotation.set(Math.PI / 2, 0, 0);
+            mesh.rotation.set(Math.PI / 2, 0, 0);
             mesh.scale.set(0.5, 0.5, 0.5);
 
             mesh.castShadow = false;
@@ -128,15 +128,15 @@
 
             world.add(mesh);
             
-            var box = new THREE.Box3().setFromObject( mesh );
-            var boxsize = new THREE.Vector3();
-            box.getSize(boxsize);
+            // var box = new THREE.Box3().setFromObject( mesh );
+            // var boxsize = new THREE.Vector3();
+            // box.getSize(boxsize);
 
-            console.log("box::::::::::: "+  box.min, box.max );
-            console.log("boxsize::::::::::: "+  boxsize );
-            for (var data in boxsize) {
-                console.log(data + ": " + boxsize[data]);
-            }
+            // console.log("box::::::::::: "+  box.min, box.max );
+            // console.log("boxsize::::::::::: "+  boxsize );
+            // for (var data in boxsize) {
+            //     console.log(data + ": " + boxsize[data]);
+            // }
 
         });
 
