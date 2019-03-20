@@ -112,7 +112,7 @@
             var material = new THREE.MeshPhongMaterial({
                 color: 0xFFFFFF,
                 specular: 0xFFFFFF,
-                shininess: 0,
+                shininess: 80,
                 flatShading: true,
                 side: THREE.DoubleSide,
                 wireframe: false
@@ -183,7 +183,7 @@
 
             ////////
 
-            point3 = new THREE.PointLight(0xffaa00, 1, 0);
+            point3 = new THREE.PointLight(yellow, 1, 0);
 
             point3.position.set(100, 100, 50);
 
@@ -192,7 +192,7 @@
 
             ////////
 
-            point4 = new THREE.PointLight(0x00aaff, 1, 0);
+            point4 = new THREE.PointLight(mint, 1, 0);
 
             point4.position.set(-100, -100, -50);
 
