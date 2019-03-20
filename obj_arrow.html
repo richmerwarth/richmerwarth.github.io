@@ -133,7 +133,7 @@
             //     console.log(data + ": " + mesh[data]);
             // }
 
-            world.add(mesh);
+             arr = world.add(mesh);
 
             // var box = new THREE.Box3().setFromObject( mesh );
             // var boxsize = new THREE.Vector3();
@@ -214,6 +214,8 @@
             // world.rotation.x -= 0.011;
             // world.rotation.y -= 0.005;
             // world.rotation.x += 0.003;
+
+            arr.rotation.x += 0.005;
 
             renderer.render(scene, camera);
         }
