@@ -91,7 +91,7 @@
         function init() {
             console.log("init()");
 
-            light1 = addLight();
+            addLight();
 
             // initTweens();
         }
@@ -162,8 +162,16 @@
             point1.castShadow = false;
 
             scene.add(point1);
+            
+            ////////
 
-            return point1;
+            point2 = new THREE.PointLight(0xFFFFFF, 2, 0);
+
+            point2.position.set(10, 10, 60);
+
+            scene.add(point2);
+
+            // return point1;
         }
 
 
