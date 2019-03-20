@@ -112,7 +112,10 @@
             var material = new THREE.MeshPhongMaterial({
                 color: 0xFFFFFF,
                 specular: 0xFFFFFF,
-                shininess: 0
+                shininess: 0,
+                flatShading: true,
+                side: THREE.DoubleSide,
+                wireframe: false
             });
             var mesh = new THREE.Mesh(geometry, material);
 
