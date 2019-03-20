@@ -53,7 +53,7 @@
 
         var colors = new Array(offwhite, coral, yellow, mint);
 
-        var bgcolor = yellow;
+        var bgcolor = mint;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -117,6 +117,9 @@
                 side: THREE.DoubleSide,
                 wireframe: false
             });
+
+            geometry.computeFaceNormals(); 
+
             var mesh = new THREE.Mesh(geometry, material);
 
             mesh.position.set(0, 0, 0);
