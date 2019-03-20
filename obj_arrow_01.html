@@ -53,7 +53,7 @@
 
         var colors = new Array(offwhite, coral, yellow, mint);
 
-        var bgcolor = mint;
+        var bgcolor = realblack;
 
         var numSprites = 24;
 
@@ -112,9 +112,9 @@
         loader.load('obj/arrow.stl', function (geometry) {
 
             var material = new THREE.MeshPhongMaterial({
-                color: 0xFFFFFF,
+                color: realblack,
                 specular: 0xFFFFFF,
-                shininess: 80,
+                shininess: 100,
                 flatShading: true,
                 side: THREE.DoubleSide,
                 wireframe: false
@@ -209,7 +209,7 @@
             requestAnimationFrame(animate);
 
             world.rotation.y -= 0.01;
-            world.rotation.x -= 0.000;
+            world.rotation.x -= 0.005;
             // world.rotation.y -= 0.005;
             // world.rotation.x += 0.003;
 
