@@ -110,7 +110,7 @@
         loader.load('obj/cross4.stl', function (geometry) {
 
             var material = new THREE.MeshPhongMaterial({
-                color: _coral,
+                color: 0xFFFFFF,
                 specular: 0xFFFFFF,
                 shininess: 50
             });
@@ -155,7 +155,7 @@
 
         function addLight() {
 
-            point1 = new THREE.PointLight(0xFFFFFF, 1, 1000);
+            point1 = new THREE.PointLight(0xFFFFFF, 1, 0);
 
             point1.position.set(0, 50, 50);
 
