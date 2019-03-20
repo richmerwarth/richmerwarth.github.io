@@ -70,7 +70,7 @@
 
         var camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.x = 0;
-        camera.position.y = 0;
+        camera.position.y = 10;
         camera.position.z = 50;
 
         camera.lookAt(world.position);
@@ -128,7 +128,7 @@
             // }
 
             world.add(mesh);
-            
+
             // var box = new THREE.Box3().setFromObject( mesh );
             // var boxsize = new THREE.Vector3();
             // box.getSize(boxsize);
@@ -157,37 +157,37 @@
 
             point1 = new THREE.PointLight(0xFFFFFF, 1, 0);
 
-            point1.position.set(0, 100, 0);
+            point1.position.set(10, 100, 10);
 
             point1.castShadow = false;
 
             scene.add(point1);
-            
+
             ////////
 
-            point2 = new THREE.PointLight(0xFFFFFF, 0.5, 0);
+            // point2 = new THREE.PointLight(0xFFFFFF, 0.5, 0);
 
-            point2.position.set(0, 0, 100);
+            // point2.position.set(0, 0, 100);
 
-            scene.add(point2);
+            // scene.add(point2);
 
-            
-////////
 
-point3 = new THREE.PointLight(0xffaa00, 1, 0);
+            ////////
 
-point3.position.set(100, 100, 50);
+            point3 = new THREE.PointLight(0xffaa00, 1, 0);
 
-scene.add(point3);
+            point3.position.set(100, 100, 50);
 
-            
-////////
+            scene.add(point3);
 
-point4 = new THREE.PointLight(0x00aaff, 1, 0);
 
-point4.position.set(0, -50, -100);
+            ////////
 
-scene.add(point4);
+            point4 = new THREE.PointLight(0x00aaff, 1, 0);
+
+            point4.position.set(0, -50, -100);
+
+            scene.add(point4);
 
             // return point1;
         }
