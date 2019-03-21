@@ -226,6 +226,16 @@
             // world.rotation.y -= 0.005;
             // world.rotation.x += 0.003;
 
+            for (i in world.children) {
+                var holder = world.children[i];
+                
+                for(n in holder.children){
+                    holder.children[n].rotation.x += 0.01;
+                }
+            }
+
+
+
 
             renderer.render(scene, camera);
         }
