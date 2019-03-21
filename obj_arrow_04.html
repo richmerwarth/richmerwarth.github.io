@@ -182,9 +182,9 @@
 
         function addLight() {
 
-            point1 = new THREE.PointLight(0xFFFFFF, 1, 0);
+            point1 = new THREE.PointLight(0xFFFFFF, 3, 0);
 
-            point1.position.set(10, 100, 10);
+            point1.position.set(0, 0, 0);
 
             point1.castShadow = false;
 
@@ -192,31 +192,30 @@
 
             ////////
 
-            point2 = new THREE.PointLight(0xFFFFFF, 0.5, 0);
+            // point2 = new THREE.PointLight(0xFFFFFF, 0.5, 0);
 
-            point2.position.set(0, 20, 100);
+            // point2.position.set(0, 20, 100);
 
-            scene.add(point2);
-
-
-            ////////
-
-            point3 = new THREE.PointLight(yellow, 1, 0);
-
-            point3.position.set(100, 100, 50);
-
-            scene.add(point3);
+            // scene.add(point2);
 
 
             ////////
 
-            point4 = new THREE.PointLight(mint, 1, 0);
+            // point3 = new THREE.PointLight(yellow, 1, 0);
 
-            point4.position.set(-100, -100, -50);
+            // point3.position.set(100, 100, 50);
 
-            scene.add(point4);
+            // scene.add(point3);
 
-            // return point1;
+
+            ////////
+
+            // point4 = new THREE.PointLight(mint, 1, 0);
+
+            // point4.position.set(-100, -100, -50);
+
+            // scene.add(point4);
+
         }
 
 
