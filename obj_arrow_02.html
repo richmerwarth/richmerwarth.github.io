@@ -136,7 +136,7 @@
 
                 mesh.position.set(-100, 0, 0);
 
-                mesh.scale.set(0.5, 0.5, 0.5);
+                mesh.scale.set(0.3, 0.3, 0.3);
 
                 mesh.castShadow = false;
                 mesh.receiveShadow = false;
@@ -220,7 +220,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            world.rotation.y -= 0.008;
+            world.rotation.y -= 0.004;
             // world.rotation.x -= 0.005;
             // world.rotation.z -= 0.003;
             // world.rotation.y -= 0.005;
@@ -230,7 +230,7 @@
                 var holder = world.children[i];
                 
                 for(n in holder.children){
-                    holder.children[n].rotation.x -= 0.05;
+                    holder.children[n].rotation.x -= 0.03;
                 }
             }
 
