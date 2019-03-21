@@ -55,7 +55,7 @@
 
         var bgcolor = mint;
 
-        var numSprites = 8;
+        var numSprites = 12;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -114,7 +114,7 @@
             var material = new THREE.MeshPhongMaterial({
                 color: offwhite,
                 specular: 0xFFFFFF,
-                shininess: 30,
+                shininess: 10,
                 flatShading: true,
                 side: THREE.DoubleSide,
                 wireframe: false
@@ -230,7 +230,7 @@
                 var holder = world.children[i];
                 
                 for(n in holder.children){
-                    holder.children[n].rotation.x -= 0.03;
+                    holder.children[n].rotation.x -= 0.025;
                 }
             }
 
