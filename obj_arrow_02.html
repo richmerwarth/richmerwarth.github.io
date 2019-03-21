@@ -221,8 +221,8 @@
             requestAnimationFrame(animate);
 
             world.rotation.y -= 0.008;
-            world.rotation.x -= 0.005;
-            world.rotation.z -= 0.003;
+            // world.rotation.x -= 0.005;
+            // world.rotation.z -= 0.003;
             // world.rotation.y -= 0.005;
             // world.rotation.x += 0.003;
 
@@ -230,7 +230,7 @@
                 var holder = world.children[i];
                 
                 for(n in holder.children){
-                    holder.children[n].rotation.x -= 0.05;
+                    holder.children[n].rotation.x -= 0.1;
                 }
             }
 
