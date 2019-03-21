@@ -126,6 +126,8 @@
             
             for (var i=0; i<numSprites; i++){
                 var holder = new THREE.Object3D();
+                holder.name = "holder"+i;
+
                 var theta = Math.PI * 2 / numSprites;
                 holder.rotation.set(0, theta*i, 0);
                 world.add(holder);
@@ -139,8 +141,14 @@
                 mesh.castShadow = false;
                 mesh.receiveShadow = false;
 
+                mesh.name = "arrow";
+
                 holder.add(mesh);
 
+            }
+
+            for (data in world) {
+                //
             }
 
         });
@@ -208,8 +216,9 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            world.rotation.z -= 0.008;
+            world.rotation.y -= 0.008;
             world.rotation.x -= 0.005;
+            world.rotation.z -= 0.003;
             // world.rotation.y -= 0.005;
             // world.rotation.x += 0.003;
 
