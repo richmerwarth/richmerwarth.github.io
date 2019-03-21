@@ -149,6 +149,10 @@
 
             for (data in world.children) {
                 console.log(data+": "+world.children[data]);
+                
+                for(item in world.children[data].children){
+                    console.log("--"+item+": "+world.children[data].children[item]);
+                }
             }
 
         });
