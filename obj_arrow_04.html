@@ -58,7 +58,7 @@
 
 
 
-        var numSprites = 128;
+        var numSprites = 256;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -115,7 +115,7 @@
         loader.load('obj/arrow.stl', function (geometry) {
 
             var material = new THREE.MeshPhongMaterial({
-                color: yellow,
+                color: offwhite,
                 specular: offwhite,
                 shininess: 10,
                 flatShading: true,
