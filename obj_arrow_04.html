@@ -146,7 +146,7 @@
 
                 mesh.position.set(-90, 0, 0);
 
-                mesh.scale.set(0.1, 0.1, 0.1);
+                mesh.scale.set(0.25, 0.25, 0.25);
 
                 mesh.castShadow = false;
                 mesh.receiveShadow = false;
@@ -185,13 +185,13 @@
 
         function addLight() {
 
-            // point1 = new THREE.PointLight(offwhite, 5, 0);
+            point1 = new THREE.PointLight(coral, 5, 0);
 
-            // point1.position.set(0, 0, 0);
+            point1.position.set(0, 0, 0);
 
-            // point1.castShadow = false;
+            point1.castShadow = false;
 
-            // scene.add(point1);
+            scene.add(point1);
 
             ////////
 
