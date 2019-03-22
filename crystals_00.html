@@ -140,7 +140,8 @@
                 var theta_z = Math.random() * (Math.PI * 2);
 
                 // holder.rotation.set(theta_x, theta*i, theta_z);
-                holder.rotation.set(theta_x, theta_y, theta_z);
+                holder.rotation.set(theta*i, 0, 0);
+                // holder.rotation.set(theta_x, theta_y, theta_z);
                 world.add(holder);
 
 
@@ -241,9 +242,9 @@
             for (i in world.children) {
                 var holder = world.children[i];
 
-                holder.rotation.x += holder.rot_x;
-                holder.rotation.y += holder.rot_y;
-                holder.rotation.z += holder.rot_z;
+                // holder.rotation.x += holder.rot_x;
+                // holder.rotation.y += holder.rot_y;
+                // holder.rotation.z += holder.rot_z;
                 
 
                 // for(n in holder.children){
