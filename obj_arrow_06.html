@@ -129,9 +129,9 @@
                 var holder = new THREE.Object3D();
                 holder.name = "holder"+i;
 
-                holder.rot_x = Math.random()/100;
-                holder.rot_y = Math.random()/100;
-                holder.rot_z = Math.random()/100;
+                holder.rot_x = Math.random()/1000;
+                holder.rot_y = Math.random()/1000;
+                holder.rot_z = Math.random()/1000;
 
                 var theta = Math.PI * 2 / numSprites;
                 
@@ -154,7 +154,7 @@
                 mesh.receiveShadow = false;
 
                 mesh.name = "arrow";
-                mesh.spinSpeed = 0.001 + Math.random()/10;
+                mesh.spinSpeed = 0.001 + Math.random()/30;
 
                 holder.add(mesh);
 
