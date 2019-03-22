@@ -129,9 +129,9 @@
                 var holder = new THREE.Object3D();
                 holder.name = "holder"+i;
 
-                holder.rot_x = Math.random()/30;
-                holder.rot_y = Math.random()/30;
-                holder.rot_z = Math.random()/30;
+                holder.rot_x = Math.random()/100;
+                holder.rot_y = Math.random()/100;
+                holder.rot_z = Math.random()/100;
 
                 var theta = Math.PI * 2 / numSprites;
                 
@@ -201,14 +201,14 @@
 
             point2.position.set(0, 100, 100);
 
-            scene.add(point2);
+            // scene.add(point2);
 
 
             ////////
 
             point3 = new THREE.PointLight(mint, 0.5, 0);
 
-            point3.position.set(0, -100, 100);
+            point3.position.set(0, -100, 0);
 
             scene.add(point3);
 
