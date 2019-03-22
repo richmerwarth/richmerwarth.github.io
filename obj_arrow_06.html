@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> foo | rich merwarth | richmerwarth.github.io </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
+    <meta property="og:site_name" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:title" content=" rich merwarth | richmerwarth.github.io " />
+    <meta property="og:url" content="https://richmerwarth.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta itemprop="name" content=" rich merwarth | richmerwarth.github.io" />
+    <meta itemprop="url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:title" content=" rich merwarth | richmerwarth.github.io" />
+    <meta name="twitter:url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="description" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+
+<body>
+    <script src="js/three.js"></script>
+    <script src="js/loaders/STLLoader.js"></script>
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+    <script src="GSAP_src/minified/plugins/ColorPropsPlugin.min.js"></script>
+
+
+
+    <script>
+        // Establish basics:
+
+        var coral = 0xd15145;
+        var yellow = 0xf0bc4d;
+        var mint = 0xa3cfbd;
+        var offwhite = 0xf7f7f2;
+        var black = 0x26201e;
+        var realblack = 0x000000;
+
+        var _coral = '#d15145';
+        var _yellow = '#f0bc4d';
+        var _mint = '#a3cfbd';
+        var _offwhite = '#f7f7f2';
+        var _black = '#26201e';
+
+        var colors = new Array(offwhite, coral, yellow, mint);
+
+        var bgcolor = realblack;
+
+
+
+
+        var numSprites = 256;
+
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color(bgcolor);
+
+        // scene.fog = new THREE.Fog(bgcolor, 20, 70);
+
+        var world = new THREE.Object3D;
+        world.name = "world";
+        scene.add(world);
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.x = 0;
+        camera.position.y = 100;
+        camera.position.z = 300;
+
+        camera.lookAt(world.position);
+
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false
+        });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+
+        function init() {
+            console.log("init()");
+
+            addLight();
+
+            // initTweens();
+        }
+
+        function recolor(target) {
+            target.material.color.set(target.currentColor);
+        }
+
+
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
+
+
+        var loader = new THREE.STLLoader();
+        loader.load('obj/arrow.stl', function (geometry) {
+
+            var material = new THREE.MeshPhongMaterial({
+                color: offwhite,
+                specular: offwhite,
+                shininess: 30,
+                flatShading: true,
+                side: THREE.DoubleSide,
+                wireframe: false
+            });
+
+            geometry.computeFaceNormals();
+            
+            for (var i=0; i<numSprites; i++){
+                var holder = new THREE.Object3D();
+                holder.name = "holder"+i;
+
+                holder.rot_x = Math.random()/30;
+                holder.rot_y = Math.random()/30;
+                holder.rot_z = Math.random()/30;
+
+                var theta = Math.PI * 2 / numSprites;
+                
+                var theta_x = Math.random() * (Math.PI * 2);
+                var theta_y = Math.random() * (Math.PI * 2);
+                var theta_z = Math.random() * (Math.PI * 2);
+
+                // holder.rotation.set(theta_x, theta*i, theta_z);
+                holder.rotation.set(theta_x, theta_y, theta_z);
+                world.add(holder);
+
+
+                var mesh = new THREE.Mesh(geometry, material);
+
+                mesh.position.set(-90, 0, 0);
+
+                mesh.scale.set(0.15, 0.15, 0.15);
+
+                mesh.castShadow = false;
+                mesh.receiveShadow = false;
+
+                mesh.name = "arrow";
+                mesh.spinSpeed = 0.001 + Math.random()/10;
+
+                holder.add(mesh);
+
+            }
+
+            // for (data in world.children) {
+            //     console.log(data+": "+world.children[data]);
+                
+            //     for(item in world.children[data].children){
+            //         console.log("--"+item+": "+world.children[data].children[item]);
+            //     }
+            // }
+
+        });
+
+        // var ball_geo = new THREE.SphereGeometry(15, 8, 8);
+        // var ball_mat = new THREE.MeshPhongMaterial({
+        //         color: 0xFFFFFF,
+        //         specular: 0xFFFFFF,
+        //         shininess: 0,
+        //         flatShading: true
+        //     });
+        // var ball = new THREE.Mesh(ball_geo, ball_mat);
+        // world.add(ball);
+
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
+
+
+        function addLight() {
+
+            point1 = new THREE.PointLight(coral, 1.5, 0);
+
+            point1.position.set(0, 0, 0);
+
+            point1.castShadow = false;
+
+            scene.add(point1);
+
+            ////////
+
+            point2 = new THREE.PointLight(yellow, 0.5, 0);
+
+            point2.position.set(0, 100, 100);
+
+            scene.add(point2);
+
+
+            ////////
+
+            point3 = new THREE.PointLight(mint, 0.5, 0);
+
+            point3.position.set(0, -100, 100);
+
+            scene.add(point3);
+
+
+            ////////
+
+            // point4 = new THREE.PointLight(mint, 1, 0);
+
+            // point4.position.set(-100, -100, -50);
+
+            // scene.add(point4);
+
+        }
+
+
+
+
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            world.rotation.y -= 0.004;
+            world.rotation.x -= 0.005;
+            // world.rotation.z -= 0.003;
+            // world.rotation.y -= 0.005;
+            // world.rotation.x += 0.003;
+
+            for (i in world.children) {
+                var holder = world.children[i];
+
+                holder.rotation.x += holder.rot_x;
+                holder.rotation.y += holder.rot_y;
+                holder.rotation.z += holder.rot_z;
+                
+
+                for(n in holder.children){
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+
+
+        init();
+        animate();
+    </script>
+</body>
+
+</html>
