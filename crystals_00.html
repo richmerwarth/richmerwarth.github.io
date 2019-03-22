@@ -58,7 +58,7 @@
 
 
 
-        var numSprites = 64;
+        var numSprites = 16;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -146,9 +146,9 @@
 
                 var mesh = new THREE.Mesh(geometry, material);
 
-                mesh.position.set(-90, 0, 0);
+                mesh.position.set(0, 90, 0);
 
-                mesh.scale.set(0.15, 0.15, 0.15);
+                mesh.scale.set(0.5, 0.5, 0.5);
 
                 mesh.castShadow = false;
                 mesh.receiveShadow = false;
@@ -246,9 +246,9 @@
                 holder.rotation.z += holder.rot_z;
                 
 
-                for(n in holder.children){
-                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
-                }
+                // for(n in holder.children){
+                //     holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                // }
             }
 
             renderer.render(scene, camera);
