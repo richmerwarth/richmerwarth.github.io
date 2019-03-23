@@ -243,14 +243,14 @@
             for (i in world.children) {
                 var holder = world.children[i];
 
-                holder.rotation.x += holder.rot_x;
-                holder.rotation.y += holder.rot_y;
-                holder.rotation.z += holder.rot_z;
+                // holder.rotation.x += holder.rot_x;
+                // holder.rotation.y += holder.rot_y;
+                // holder.rotation.z += holder.rot_z;
                 
 
-                // for(n in holder.children){
-                //     holder.children[n].rotation.x -= holder.children[n].spinSpeed;
-                // }
+                for(n in holder.children){
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                }
             }
 
             renderer.render(scene, camera);
