@@ -58,7 +58,7 @@
 
 
 
-        var numSprites = 8;
+        var numSprites = 12;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -136,12 +136,13 @@
 
                 var theta = Math.PI * 2 / numSprites;
                 
-                var theta_x = Math.random() * (Math.PI * 2);
+                // var theta_x = Math.random() * (Math.PI * 2);
+                var theta_x = Math.random() * (Math.PI / 2);
                 var theta_y = Math.random() * (Math.PI * 2);
                 var theta_z = Math.random() * (Math.PI * 2);
 
                 // holder.rotation.set(theta_x, theta*i, theta_z);
-                holder.rotation.set(0, theta*i, 0);
+                holder.rotation.set(theta_x, theta*i, 0);
                 // holder.rotation.set(theta_x, theta_y, theta_z);
                 world.add(holder);
 
