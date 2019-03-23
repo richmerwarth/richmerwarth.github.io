@@ -121,7 +121,7 @@
                 flatShading: true,
                 // side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 0.8,
+                opacity: 0.9,
                 wireframe: false
             });
 
@@ -150,7 +150,7 @@
 
                 var mesh = new THREE.Mesh(geometry, material);
 
-                mesh.position.set(75, 0, 0);
+                mesh.position.set(50, 0, 0);
                 mesh.rotation.x = theta_x;
 
                 mesh.scale.set(0.75, 0.75, 0.75);
@@ -237,7 +237,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            // world.rotation.y -= 0.001;
+            world.rotation.y -= 0.001;
             // world.rotation.x -= 0.0005;
             // world.rotation.z -= 0.003;
             // world.rotation.y -= 0.005;
