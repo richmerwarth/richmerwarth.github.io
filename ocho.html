@@ -58,7 +58,7 @@
 
 
 
-        var numSprites = 64;
+        var numSprites = 32;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -175,7 +175,7 @@
                 mesh.receiveShadow = false;
 
                 mesh.name = "arrow";
-                mesh.spinSpeed = 0.003 + Math.random() / 30;
+                mesh.spinSpeed = 0.01 + Math.random() / 30;
 
                 holder.add(mesh);
 
