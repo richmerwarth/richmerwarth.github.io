@@ -128,7 +128,7 @@
                     flatShading: true,
                     // side: THREE.DoubleSide,
                     transparent: true,
-                    opacity: 0.8,
+                    opacity: 0.95,
                     wireframe: false
                 });
 
@@ -155,12 +155,15 @@
 
                 var mesh = new THREE.Mesh(geometry, material);
 
-                var radius = Math.random() * 25 + 25;
+                var thickness = 0.25 + Math.random() * 0.4;
+                var length = 0.5 + Math.random()*2;
+
+                // var radius = Math.random() * 25 + 25;
+                var radius = length * 0.66 * 100;
+
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
 
-                var thickness = 0.25 + Math.random() * 0.4;
-                var length = 0.5 + Math.random();
                 mesh.scale.set(length, thickness, thickness);
 
                 mesh.castShadow = false;
