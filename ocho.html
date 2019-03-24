@@ -69,6 +69,11 @@
         world.name = "world";
         scene.add(world);
 
+
+        var numeral = new THREE.Object3D;
+        numeral.name = "numeral";
+        scene.add(numeral);
+
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
@@ -111,7 +116,7 @@
         ///////////////////////////////////////////////////////
 
 
-        var loader = new THREE.STLLoader();
+        // var loader = new THREE.STLLoader();
         loader.load('obj/crystals/crystal_01.stl', function (geometry) {
 
             geometry.computeFaceNormals();
