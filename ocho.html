@@ -124,7 +124,7 @@
                 var material = new THREE.MeshPhongMaterial({
                     color: myColor,
                     specular: offwhite,
-                    shininess: 80,
+                    shininess: 90,
                     flatShading: true,
                     // side: THREE.DoubleSide,
                     transparent: true,
@@ -136,9 +136,6 @@
                 var holder = new THREE.Object3D();
                 holder.name = "holder" + i;
 
-                // holder.rot_x = Math.random() / 200;
-                // holder.rot_y = Math.random() / 200;
-                // holder.rot_z = Math.random() / 200;
 
                 var theta = Math.PI * 2 / numSprites;
 
@@ -156,10 +153,10 @@
                 var mesh = new THREE.Mesh(geometry, material);
 
                 var thickness = 0.25 + Math.random() * 0.6;
-                var length = 0.5 + Math.random()*2;
+                var length = 0.5 + Math.random()*0.5;
 
                 // var radius = Math.random() * 25 + 25;
-                var radius = length * 0.5 * 100;
+                var radius = length * 0.66 * 100;
 
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
