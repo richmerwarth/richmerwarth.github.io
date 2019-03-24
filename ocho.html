@@ -139,13 +139,9 @@
 
                 var theta = Math.PI * 2 / numSprites;
 
-                // var theta_x = Math.random() * (Math.PI * 2);
                 // var theta_x = (Math.random() * Math.PI / 2) - Math.PI / 4;
                 var theta_x = (Math.random() * 1) - 0.5;
-                // var theta_y = Math.random() * (Math.PI / 4);
-                // var theta_z = Math.random() * (Math.PI * 2);
 
-                // holder.rotation.set(theta_x, theta*i, theta_z);
                 holder.rotation.set(theta_x, theta * i, 0);
                 // holder.rotation.set(theta_x, theta_y, theta_z);
                 world.add(holder);
@@ -180,6 +176,8 @@
         loader.load('obj/crystals/ocho.stl', function (geometry) {
 
             geometry.computeFaceNormals();
+
+            console.log("ocho");
 
             var material = new THREE.MeshPhongMaterial({
                 color: coral,
