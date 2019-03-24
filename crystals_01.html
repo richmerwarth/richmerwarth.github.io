@@ -154,7 +154,8 @@
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
 
-                mesh.scale.set(0.75, 0.1, 0.1);
+                var thickness = 0.25 + Math.random() * 0.6;
+                mesh.scale.set(0.75, thickness, thickness);
 
                 mesh.castShadow = false;
                 mesh.receiveShadow = false;
