@@ -120,7 +120,7 @@
 
             for (var i = 0; i < numSprites; i++) {
 
-                var myColor = colors[1];
+                var myColor = colors[Math.floor(Math.random()*colors.length)];
                 var material = new THREE.MeshPhongMaterial({
                     color: myColor,
                     specular: offwhite,
