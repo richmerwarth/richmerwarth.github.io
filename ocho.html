@@ -223,15 +223,6 @@
 
         });
 
-        // var ball_geo = new THREE.SphereGeometry(15, 8, 8);
-        // var ball_mat = new THREE.MeshPhongMaterial({
-        //         color: 0xFFFFFF,
-        //         specular: 0xFFFFFF,
-        //         shininess: 0,
-        //         flatShading: true
-        //     });
-        // var ball = new THREE.Mesh(ball_geo, ball_mat);
-        // world.add(ball);
 
         ///////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////
@@ -242,7 +233,7 @@
 
             point1 = new THREE.PointLight(0xffffff, 1.0, 0);
 
-            point1.position.set(0, 200, 200);
+            point1.position.set(0, 200, -200);
 
             point1.castShadow = false;
 
@@ -252,7 +243,7 @@
 
             point2 = new THREE.PointLight(yellow, 0.5, 0);
 
-            point2.position.set(200, 100, 150);
+            point2.position.set(200, 100, -150);
 
             scene.add(point2);
 
