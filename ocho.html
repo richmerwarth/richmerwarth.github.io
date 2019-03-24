@@ -175,7 +175,8 @@
         });
 
 
-        loader.load('obj/crystals/ocho.stl', function (geometry) {
+        var loader2 = new THREE.STLLoader();
+        loader2.load('obj/crystals/ocho.stl', function (geometry) {
 
             geometry.computeFaceNormals();
 
