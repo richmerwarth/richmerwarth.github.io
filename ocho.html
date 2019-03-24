@@ -136,16 +136,16 @@
                 var holder = new THREE.Object3D();
                 holder.name = "holder" + i;
 
-                holder.rot_x = Math.random() / 200;
-                holder.rot_y = Math.random() / 200;
-                holder.rot_z = Math.random() / 200;
+                // holder.rot_x = Math.random() / 200;
+                // holder.rot_y = Math.random() / 200;
+                // holder.rot_z = Math.random() / 200;
 
                 var theta = Math.PI * 2 / numSprites;
 
                 // var theta_x = Math.random() * (Math.PI * 2);
-                var theta_x = Math.random() * (Math.PI) - Math.PI / 2;
-                var theta_y = Math.random() * (Math.PI * 2);
-                var theta_z = Math.random() * (Math.PI * 2);
+                var theta_x = (Math.random() * Math.PI/2) - Math.PI / 4;
+                // var theta_y = Math.random() * (Math.PI / 4);
+                // var theta_z = Math.random() * (Math.PI * 2);
 
                 // holder.rotation.set(theta_x, theta*i, theta_z);
                 holder.rotation.set(theta_x, theta * i, 0);
