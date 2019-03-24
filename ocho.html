@@ -117,7 +117,7 @@
 
 
         var loader = new THREE.STLLoader();
-        loader.load('obj/crystals/ocho.stl', function (geometry) {
+        loader.load('obj/crystals/crystal_01.stl', function (geometry) {
 
             geometry.computeFaceNormals();
 
@@ -183,7 +183,7 @@
 
             geometry2.computeFaceNormals();
 
-            console.log("ocho");
+            console.log("ocho2");
 
             var material2 = new THREE.MeshPhongMaterial({
                 color: coral,
@@ -196,22 +196,21 @@
                 wireframe: false
             });
 
-
-            var mesh = new THREE.Mesh(geometry2, material2);
+            var mesh2 = new THREE.Mesh(geometry2, material2);
 
             // var radius = Math.random() * 25 + 25;
             var radius = 10;
 
-            mesh.position.set(radius, 0, 0);
+            mesh2.position.set(radius, 0, 0);
 
-            mesh.scale.set(1, 1, 1);
+            mesh2.scale.set(1, 1, 1);
 
-            mesh.castShadow = false;
-            mesh.receiveShadow = false;
+            mesh2.castShadow = false;
+            mesh2.receiveShadow = false;
 
-            mesh.name = "ocho";
+            mesh2.name = "ocho";
 
-            numeral.add(mesh);
+            numeral.add(mesh2);
 
         });
 
