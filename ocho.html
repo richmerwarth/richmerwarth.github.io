@@ -203,7 +203,7 @@
 
         function addLight() {
 
-            point1 = new THREE.PointLight(coral, 1.0, 0);
+            point1 = new THREE.PointLight(0xffffff, 1.0, 0);
 
             point1.position.set(0, 200, 200);
 
@@ -213,7 +213,7 @@
 
             ////////
 
-            point2 = new THREE.PointLight(yellow, 0.5, 0);
+            point2 = new THREE.PointLight(0xffffff, 0.5, 0);
 
             point2.position.set(200, 100, 150);
 
@@ -222,7 +222,7 @@
 
             ////////
 
-            point3 = new THREE.PointLight(mint, 0.5, 0);
+            point3 = new THREE.PointLight(0xffffff, 0.5, 0);
 
             point3.position.set(-200, -100, 0);
 
@@ -248,10 +248,10 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            world.rotation.y -= 0.001;
-            world.rotation.x -= 0.002;
+            // world.rotation.y -= 0.001;
+            // world.rotation.x -= 0.002;
             // world.rotation.z -= 0.003;
-            world.rotation.z -= 0.007;
+            world.rotation.z -= 0.005;
             // world.rotation.x += 0.003;
 
             for (i in world.children) {
