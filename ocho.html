@@ -58,7 +58,7 @@
 
 
 
-        var numSprites = 32;
+        var numSprites = 40;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -159,7 +159,7 @@
 
                 var thickness = 0.2 + Math.random() * 0.5;
                 // var thickness = 0.33;
-                var length = 1 + Math.random() * 1.0;
+                var length = 1.33 + Math.random() * 1.5;
                 // var length = 0.66;
 
                 // var radius = Math.random() * 25 + 25;
@@ -185,7 +185,7 @@
 
 
         var loader2 = new THREE.STLLoader();
-        loader2.load('obj/crystals/ocho.stl', function (geometry2) {
+        loader2.load('obj/crystals/big8.stl', function (geometry2) {
 
             geometry2.computeFaceNormals();
 
