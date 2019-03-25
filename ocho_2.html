@@ -141,7 +141,7 @@
                 holder.name = "holder" + i;
 
                 var theta = Math.PI * 2 / numSprites;
-                
+
 
                 var theta_x = 0;
 
@@ -161,11 +161,11 @@
                 var thickness = 0.2 + Math.random() * 1.5;
                 // var thickness = 0.33;
                 // var length = 4.0 + Math.random() * 3.0;
-                var length = 3.0 + Math.random()*2.0;
+                var length = 3.0 + Math.random() * 2.0;
 
                 // var radius = Math.random() * 25 + 25;
                 // var radius = length * 0.66 * 100;
-                var radius = 5 + Math.random()*50;
+                var radius = 5 + Math.random() * 50;
 
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
@@ -178,7 +178,7 @@
                 mesh.name = "arrow";
                 mesh.spinSpeed = 0.01 + Math.random() / 30;
 
-                if(Math.random() > 0.5){
+                if (Math.random() > 0.5) {
                     mesh.spinSpeed *= -1;
                 }
 
@@ -208,24 +208,40 @@
             });
 
             var mesh2 = new THREE.Mesh(geometry2, material2);
+            var mesh3 = new THREE.Mesh(geometry2, material2);
 
             mesh2.rotation.y = Math.PI;
+            mesh3.rotation.y = Math.PI;
+            mesh3.rotation.z = Math.PI/2;
 
-            // var radius = Math.random() * 25 + 25;
             var radius = 250;
 
             mesh2.position.set(0, radius, 0);
+            mesh3.position.set(0, radius, 0);
 
             mesh2.scale.set(1, 1, 1);
+            mesh3.scale.set(1, 1, 1);
 
             mesh2.castShadow = false;
+            mesh3.castShadow = false;
+
             mesh2.receiveShadow = false;
+            mesh3.receiveShadow = false;
 
             mesh2.name = "ocho";
+            mesh3.name = "ocho";
 
             numeral.add(mesh2);
+            numeral.add(mesh3);
+
+
+
+
+
 
         });
+
+             
 
 
         ///////////////////////////////////////////////////////
@@ -288,6 +304,7 @@
             // world.rotation.x += 0.003;
 
             numeral.children[0].rotation.z += 0.02;
+            numeral.children[1].rotation.z += 0.02;
 
             for (i in world.children) {
                 var holder = world.children[i];
