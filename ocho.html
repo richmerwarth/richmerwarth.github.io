@@ -189,7 +189,7 @@
 
             geometry2.computeFaceNormals();
 
-            console.log("ocho2");
+            console.log("ocho");
 
             var material2 = new THREE.MeshPhongMaterial({
                 color: coral,
@@ -281,6 +281,8 @@
             // world.rotation.x -= 0.002;
             // world.rotation.z -= 0.003;
             // world.rotation.x += 0.003;
+
+            numeral.rotation.z += 0.01;
 
             for (i in world.children) {
                 var holder = world.children[i];
