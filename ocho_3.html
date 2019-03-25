@@ -60,7 +60,7 @@
 
 
         var numSprites = 72;
-        var numStars = 24;
+        var numStars = 36;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -266,12 +266,12 @@
                 var holder = new THREE.Object3D();
                 holder.name = "holder" + i;
 
-                var theta = Math.PI * 2 / numSprites;
+                var theta = Math.PI * 2 / numStars;
 
 
                 var theta_x = 0;
 
-                var theta_x = Math.random() * 0.33;
+                var theta_x = Math.random() * 0.5;
                 var theta_y = Math.random() * (Math.PI * 2);
                 var theta_z = Math.random() * (Math.PI * 2);
 
@@ -370,8 +370,8 @@
             // world.rotation.z -= 0.005;
 
             world.rotation.y -= 0.003;
-            stars.rotation.y -= 0.005;
-            stars.rotation.z += 0.004;
+            stars.rotation.y -= 0.006;
+            stars.rotation.z += 0.0033;
             // world.rotation.x -= 0.002;
             // world.rotation.z -= 0.003;
             // world.rotation.x += 0.003;
@@ -410,6 +410,7 @@
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                    holder.children[n].rotation.y += holder.children[n].spinSpeed;
                 }
             }
 
