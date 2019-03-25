@@ -308,9 +308,7 @@
                 console.log("num child: "+i);
                 var eight = numeral.children[i];
 
-                for (n in eight.children) {
-                    eight.children[n].rotation.z -= eight.children[n].spinSpeed;
-                }
+                    eight.rotation.z -= eight.spinSpeed;
             }
 
 
