@@ -51,7 +51,8 @@
         var _offwhite = '#f7f7f2';
         var _black = '#26201e';
 
-        var colors = new Array(offwhite, coral, yellow, mint, black);
+        // var colors = new Array(offwhite, coral, yellow, mint, black)
+        var colors = new Array(offwhite, coral, yellow, yellow, yellow);
 
         var bgcolor = yellow;
 
@@ -125,7 +126,7 @@
 
                 var myColor = colors[Math.floor(Math.random() * colors.length)];
                 var material = new THREE.MeshPhongMaterial({
-                    color: yellow,
+                    color: myColor,
                     specular: offwhite,
                     shininess: 90,
                     flatShading: true,
