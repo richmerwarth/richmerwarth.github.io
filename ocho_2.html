@@ -158,14 +158,14 @@
 
                 var mesh = new THREE.Mesh(geometry, material);
 
-                var thickness = 0.2 + Math.random() * 1.25;
+                var thickness = 0.2 + Math.random() * 1.5;
                 // var thickness = 0.33;
                 // var length = 4.0 + Math.random() * 3.0;
-                var length = 4.0;
+                var length = 3.0 + Math.random()*2.0;
 
                 // var radius = Math.random() * 25 + 25;
                 // var radius = length * 0.66 * 100;
-                var radius = 5 + Math.random()*20;
+                var radius = 5 + Math.random()*50;
 
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
