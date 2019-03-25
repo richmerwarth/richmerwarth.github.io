@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title> foo | rich merwarth | richmerwarth.github.io </title>
+    <title> 8 | rich merwarth | richmerwarth.github.io </title>
     <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
     <meta property="og:site_name" content=" rich merwarth | richmerwarth.github.io " />
     <meta property="og:title" content=" rich merwarth | richmerwarth.github.io " />
@@ -190,49 +190,48 @@
 
 
         var loader2 = new THREE.STLLoader();
+        var numEights = 3;
         loader2.load('obj/crystals/big8_2.stl', function (geometry2) {
 
             geometry2.computeFaceNormals();
 
             console.log("ocho");
 
-            var material2 = new THREE.MeshPhongMaterial({
-                color: coral,
-                specular: offwhite,
-                shininess: 100,
-                flatShading: false,
-                side: THREE.DoubleSide,
-                transparent: false,
-                opacity: 0.95,
-                wireframe: false
-            });
 
-            var mesh2 = new THREE.Mesh(geometry2, material2);
-            var mesh3 = new THREE.Mesh(geometry2, material2);
+                var material2 = new THREE.MeshPhongMaterial({
+                    color: coral,
+                    specular: offwhite,
+                    shininess: 100,
+                    flatShading: false,
+                    side: THREE.DoubleSide,
+                    transparent: false,
+                    opacity: 0.95,
+                    wireframe: false
+                });
 
-            mesh2.rotation.y = Math.PI;
-            mesh3.rotation.y = Math.PI;
-            mesh3.rotation.z = Math.PI/2;
 
-            var radius = 250;
+                var mesh8 = new THREE.Mesh(geometry2, material2);
 
-            mesh2.position.set(0, radius, 0);
-            mesh3.position.set(0, radius, 0);
+                mesh8.rotation.y = Math.PI;
 
-            mesh2.scale.set(1, 1, 1);
-            mesh3.scale.set(1, 1, 1);
+                var radius = 250;
 
-            mesh2.castShadow = false;
-            mesh3.castShadow = false;
+                mesh8.position.set(0, radius, 0);
+                
+                mesh8.scale.set(1, 1, 1);
+                
+                mesh8.castShadow = false;
 
-            mesh2.receiveShadow = false;
-            mesh3.receiveShadow = false;
+                mesh8.receiveShadow = false;
 
-            mesh2.name = "ocho";
-            mesh3.name = "ocho";
+                mesh8.name = "ocho";
 
-            numeral.add(mesh2);
-            numeral.add(mesh3);
+            for (var i = 0; i < numEights; i++) {
+
+                mesh8.spinSpeed = 0.001*i;
+
+                numeral.add(mesh8);
+            }
 
 
 
@@ -241,7 +240,7 @@
 
         });
 
-             
+
 
 
         ///////////////////////////////////////////////////////
@@ -303,8 +302,16 @@
             // world.rotation.z -= 0.003;
             // world.rotation.x += 0.003;
 
-            numeral.children[0].rotation.z += 0.02;
-            numeral.children[1].rotation.z += 0.03;
+
+
+            for (i in eight.children) {
+                var eight = numeral.children[i];
+
+                for (n in eight.children) {
+                    eight.children[n].rotation.z -= eight.children[n].spinSpeed;
+                }
+            }
+
 
             for (i in world.children) {
                 var holder = world.children[i];
