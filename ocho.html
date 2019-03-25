@@ -178,6 +178,10 @@
                 mesh.name = "arrow";
                 mesh.spinSpeed = 0.01 + Math.random() / 30;
 
+                if(Math.random() >0.5){
+                    mesh.spinSpeen *= -1;
+                }
+
                 holder.add(mesh);
 
             }
@@ -199,7 +203,7 @@
                 flatShading: false,
                 side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 0.9,
+                opacity: 0.95,
                 wireframe: false
             });
 
