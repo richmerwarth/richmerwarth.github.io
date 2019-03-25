@@ -54,7 +54,7 @@
         // var colors = new Array(offwhite, coral, yellow, mint, black)
         var colors = new Array(offwhite, coral, yellow, yellow, yellow, mint);
 
-        var bgcolor = mint;
+        var bgcolor = realblack;
 
 
 
@@ -243,7 +243,7 @@
 
 
         var loader3 = new THREE.STLLoader();
-        loader3.load('obj/crystals/flat_star.stl', function (geometry) {
+        loader3.load('obj/crystals/flat-star.stl', function (geometry) {
 
             geometry.computeFaceNormals();
 
@@ -376,7 +376,7 @@
 
 
             for (i in numeral.children) {
-                console.log("num child: "+i);
+                // console.log("num child: "+i);
                 var eight = numeral.children[i];
 
                     eight.rotation.z -= eight.spinSpeed;
