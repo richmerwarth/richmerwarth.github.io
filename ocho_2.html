@@ -190,7 +190,7 @@
 
 
         var loader2 = new THREE.STLLoader();
-        var numEights = 8;
+        var numEights = 3;
         loader2.load('obj/crystals/big8_2.stl', function (geometry2) {
 
             geometry2.computeFaceNormals();
@@ -228,7 +228,7 @@
                 mesh8.name = "ocho";
 
 
-                mesh8.spinSpeed = 0.013*(i+1);
+                mesh8.spinSpeed = 0.011*(i+1);
 
                 numeral.add(mesh8);
             }
