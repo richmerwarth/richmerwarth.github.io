@@ -59,7 +59,7 @@
 
 
 
-        var numSprites = 40;
+        var numSprites = 56;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -196,10 +196,10 @@
                 color: coral,
                 specular: offwhite,
                 shininess: 90,
-                flatShading: true,
-                // side: THREE.DoubleSide,
+                flatShading: false,
+                side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 0.66,
+                opacity: 0.9,
                 wireframe: false
             });
 
