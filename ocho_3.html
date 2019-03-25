@@ -60,6 +60,7 @@
 
 
         var numSprites = 72;
+        var numStars = 24;
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
@@ -247,7 +248,7 @@
 
             geometry.computeFaceNormals();
 
-            for (var i = 0; i < numSprites; i++) {
+            for (var i = 0; i < numStars; i++) {
 
                 var myColor = colors[Math.floor(Math.random() * colors.length)];
                 var material = new THREE.MeshPhongMaterial({
@@ -286,11 +287,11 @@
                 var thickness = 0.2 + Math.random() * 1.5;
                 // var thickness = 0.33;
                 // var length = 4.0 + Math.random() * 3.0;
-                var length = 3.0 + Math.random() * 2.0;
+                var length = 1.0;
 
                 // var radius = Math.random() * 25 + 25;
                 // var radius = length * 0.66 * 100;
-                var radius = 20;
+                var radius = 50 + Math.random()*100;
 
                 mesh.position.set(radius, 0, 0);
                 mesh.rotation.x = theta_x;
@@ -369,6 +370,8 @@
             // world.rotation.z -= 0.005;
 
             world.rotation.y -= 0.003;
+            stars.rotation.y -= 0.005;
+            stars.rotation.7 += 0.005;
             // world.rotation.x -= 0.002;
             // world.rotation.z -= 0.003;
             // world.rotation.x += 0.003;
@@ -385,6 +388,20 @@
 
             for (i in world.children) {
                 var holder = world.children[i];
+
+                // holder.rotation.x += holder.rot_x;
+                // holder.rotation.y += holder.rot_y;
+                // holder.rotation.z += holder.rot_z;
+
+
+                for (n in holder.children) {
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                }
+            }
+
+
+            for (i in stars.children) {
+                var holder = stars.children[i];
 
                 // holder.rotation.x += holder.rot_x;
                 // holder.rotation.y += holder.rot_y;
