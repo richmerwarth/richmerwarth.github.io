@@ -50,8 +50,8 @@ function addShards(numItems) {
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.25 + Math.random() * 0.5;
-            var length = 0.33 + Math.random() * 0.33;
+            var thickness = 0.25 + Math.random() * 0.33;
+            var length = 0.25 + Math.random() * 0.33;
             mesh.scale.set(length, thickness, thickness);
 
             mesh.castShadow = false;
