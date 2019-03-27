@@ -22,6 +22,7 @@ function addCrystals(numItems) {
             wireframe: false
         });
 
+
         geometry.computeFaceNormals();
 
         for (var i = 0; i < numSprites; i++) {
@@ -33,25 +34,23 @@ function addCrystals(numItems) {
             holder.rot_z = Math.random() / 200;
 
             var theta = Math.PI * 2 / numSprites;
-
-            // var theta_x = Math.random() * (Math.PI * 2);
+            
             var theta_x = Math.random() * (Math.PI) - Math.PI / 2;
             var theta_y = Math.random() * (Math.PI * 2);
             var theta_z = Math.random() * (Math.PI * 2);
 
-            // holder.rotation.set(theta_x, theta*i, theta_z);
             holder.rotation.set(theta_x, theta * i, 0);
-            // holder.rotation.set(theta_x, theta_y, theta_z);
             world.add(holder);
-
 
             var mesh = new THREE.Mesh(geometry, material);
 
-            var radius = Math.random() * 25 + 25;
+
+            var radius = Math.random() * 0 + 15;
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.25 + Math.random() * 0.6;
+            var thickness = 0.5 + Math.random() * 0.5;
+            var length = 0.33 + Math.random() * 0.33;
             mesh.scale.set(0.75, thickness, thickness);
 
             mesh.castShadow = false;
