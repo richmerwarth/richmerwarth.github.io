@@ -1,5 +1,7 @@
 function addCrystals() {
 
+    console.log("addCrystals()");
+
 
 
     var loader = new THREE.STLLoader();
