@@ -1,6 +1,6 @@
-function addCrystals() {
-
-    console.log("addCrystals()");
+function addCrystals(numItems) {
+    var numSprites = numItems;
+    console.log("addCrystals("+numItems+")");
 
 
 

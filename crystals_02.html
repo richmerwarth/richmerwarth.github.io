@@ -59,8 +59,6 @@
 
 
 
-        var numSprites = 24;
-
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
 
@@ -93,15 +91,16 @@
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
 
-
         function init() {
             console.log("init()");
 
             addLights();
-            addCrystals();
-
-            // initTweens();
+            addCrystals(24);
         }
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
 
         function recolor(target) {
             target.material.color.set(target.currentColor);
