@@ -35,8 +35,8 @@ function addCrystals(numItems) {
 
             var theta = Math.PI * 2 / numSprites;
             
-            // var theta_x = Math.random() * (Math.PI) - Math.PI / 2;
-            var theta_x = 0;
+            var theta_x = Math.random() * (Math.PI) - Math.PI / 2;
+            //var theta_x = 0;
             var theta_y = Math.random() * (Math.PI * 2);
             var theta_z = Math.random() * (Math.PI * 2);
 
