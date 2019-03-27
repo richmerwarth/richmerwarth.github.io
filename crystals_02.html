@@ -97,7 +97,7 @@
         function init() {
             console.log("init()");
 
-            addLight();
+            addLights();
             addCrystals();
 
             // initTweens();
@@ -108,31 +108,12 @@
         }
 
 
-        ///////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////
 
-
-        // var ball_geo = new THREE.SphereGeometry(15, 8, 8);
-        // var ball_mat = new THREE.MeshPhongMaterial({
-        //         color: 0xFFFFFF,
-        //         specular: 0xFFFFFF,
-        //         shininess: 0,
-        //         flatShading: true
-        //     });
-        // var ball = new THREE.Mesh(ball_geo, ball_mat);
-        // world.add(ball);
-
-        ///////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////
-
-
-        function addLight() {
+        function addLights() {
 
             point1 = new THREE.PointLight(coral, 1.0, 0);
 
-            point1.position.set(0, 0, -300);
+            point1.position.set(0, 300, -300);
 
             point1.castShadow = false;
 
@@ -155,15 +136,6 @@
 
             scene.add(point3);
 
-
-            ////////
-
-            // point4 = new THREE.PointLight(mint, 1, 0);
-
-            // point4.position.set(-100, -100, -50);
-
-            // scene.add(point4);
-
         }
 
 
@@ -177,26 +149,17 @@
 
             world.rotation.y -= 0.005;
             world.rotation.x -= 0.002;
-            // world.rotation.z -= 0.003;
-            // world.rotation.y -= 0.005;
-            // world.rotation.x += 0.003;
 
             for (i in world.children) {
                 var holder = world.children[i];
 
-                // holder.rotation.x += holder.rot_x;
-                // holder.rotation.y += holder.rot_y;
-                // holder.rotation.z += holder.rot_z;
-                
-
-                for(n in holder.children){
+                for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed;
                 }
             }
 
             renderer.render(scene, camera);
         }
-
 
 
         init();
