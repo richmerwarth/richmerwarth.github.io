@@ -1,8 +1,12 @@
 function addCrystals(numItems) {
-    var numSprites = numItems;
     console.log("addCrystals("+numItems+")");
 
+    var numSprites = numItems;
 
+    var crystalParams = {
+        foo: 100,
+        bar: 50
+    }
 
     var loader = new THREE.STLLoader();
     loader.load('obj/crystals/crystal_01.stl', function (geometry) {
