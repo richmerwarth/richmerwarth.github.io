@@ -1,5 +1,5 @@
 function addCrystals(numItems) {
-    console.log("addCrystals("+numItems+"):  v.2");
+    console.log("addCrystals("+numItems+"):  v.3");
 
     var numSprites = numItems;
 
@@ -58,7 +58,7 @@ function addCrystals(numItems) {
             mesh.receiveShadow = false;
 
             mesh.name = "crystal_"+i;
-            mesh.spinSpeed = 0.2 - Math.random() *0.4;
+            mesh.spinSpeed = 0.03 - Math.random() *0.06;
 
             holder.add(mesh);
 
