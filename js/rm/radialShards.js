@@ -58,7 +58,7 @@ function addShards(numItems, container) {
             mesh.receiveShadow = false;
 
             mesh.name = "shard_"+i;
-            mesh.spinSpeed = 0.05 - Math.random() *0.1;
+            mesh.spinSpeed = 0.2 - Math.random() *0.4;
 
             holder.add(mesh);
 
