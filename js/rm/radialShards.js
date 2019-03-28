@@ -18,8 +18,8 @@ function addShards(numItems, container) {
             flatShading: true,
             // side: THREE.DoubleSide,
             transparent: true,
-            opacity: 0.8,
-            wireframe: true
+            opacity: 0.5,
+            wireframe: false
         });
 
 
@@ -46,12 +46,12 @@ function addShards(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            var radius = Math.random() * 30 + 10;
+            var radius = Math.random() * 40 + 5;
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
             var thickness = 0.05 + Math.random() * 0.1;
-            var length = 0.5 + Math.random() * 0.75;
+            var length = 0.5 + Math.random() * 0.5;
             mesh.scale.set(length, thickness, thickness);
 
             mesh.castShadow = false;
