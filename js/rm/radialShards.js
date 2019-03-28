@@ -44,7 +44,7 @@ function addShards(numItems, container) {
                 flatShading: true,
                 // side: THREE.DoubleSide,
                 transparent: true,
-                opacity: 1.0,
+                opacity: 0.66,
                 wireframe: false
             });
 
