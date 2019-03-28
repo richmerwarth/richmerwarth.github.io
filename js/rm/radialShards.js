@@ -17,9 +17,9 @@ function addShards(numItems, container) {
             shininess: 80,
             flatShading: true,
             // side: THREE.DoubleSide,
-            transparent: false,
-            opacity: 1,
-            wireframe: false
+            transparent: true,
+            opacity: 0.8,
+            wireframe: true
         });
 
 
@@ -50,7 +50,7 @@ function addShards(numItems, container) {
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.01 + Math.random() * 0.25;
+            var thickness = 0.05 + Math.random() * 0.1;
             var length = 0.5 + Math.random() * 0.75;
             mesh.scale.set(length, thickness, thickness);
 
