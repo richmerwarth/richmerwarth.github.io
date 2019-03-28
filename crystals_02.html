@@ -165,6 +165,19 @@
                 }
             }
 
+            shards.rotation.y -= 0.004;
+            shards.rotation.x += 0.003;
+
+
+            for (i in shards.children) {
+                var holder = shards.children[i];
+
+                for (n in holder.children) {
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                }
+            }
+
+
             renderer.render(scene, camera);
         }
 

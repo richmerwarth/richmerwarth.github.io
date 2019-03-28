@@ -1,7 +1,7 @@
 function addCrystals(numItems, container) {
     console.log("addCrystals("+numItems+"):  v.5");
-    console.log(container.name);
-    console.log(container);
+    // console.log(container.name);
+    // console.log(container);
 
     var numSprites = numItems;
 
