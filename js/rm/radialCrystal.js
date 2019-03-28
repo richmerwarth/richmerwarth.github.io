@@ -52,7 +52,7 @@ function addCrystals(numItems, container) {
             mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.5 + Math.random() * 0.5;
+            var thickness = 0.5 + Math.random() * 0.33;
             var length = 0.55 + Math.random() * 0.33;
             mesh.scale.set(length, thickness, thickness);
 
