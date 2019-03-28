@@ -1,5 +1,5 @@
-function addCrystals(numItems) {
-    console.log("addCrystals("+numItems+"):  v.3");
+function addCrystals(numItems, container) {
+    console.log("addCrystals("+numItems+"):  v.4");
 
     var numSprites = numItems;
 
@@ -41,7 +41,7 @@ function addCrystals(numItems) {
             var theta_z = Math.random() * (Math.PI * 2);
 
             holder.rotation.set(theta_x, theta * i, 0);
-            world.add(holder);
+            container.add(holder);
 
             var mesh = new THREE.Mesh(geometry, material);
 

@@ -38,6 +38,8 @@
 
 
     <script>
+
+        console.log("crystals: v.2");
         // Establish basics:
 
         var coral = 0xd15145;
@@ -65,9 +67,13 @@
 
         // scene.fog = new THREE.Fog(bgcolor, 20, 70);
 
-        var world = new THREE.Object3D;
-        world.name = "world";
-        scene.add(world);
+        var crystals = new THREE.Object3D;
+        crystals.name = "crystals";
+        scene.add(crystals);
+
+        var shards = new THREE.Object3D;
+        shards.name = "shards";
+        scene.add(shards);
 
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
@@ -96,8 +102,8 @@
             console.log("init()");
 
             addLights();
-            addCrystals(6);
-            addShards(16);
+            addCrystals(6, crystals);
+            addShards(16, shards);
         }
 
         ////////////////////////////////////////////////////////
@@ -148,11 +154,11 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            world.rotation.y -= 0.005;
-            world.rotation.x -= 0.002;
+            crystals.rotation.y -= 0.005;
+            crystals.rotation.x -= 0.002;
 
-            for (i in world.children) {
-                var holder = world.children[i];
+            for (i in crystals.children) {
+                var holder = crystals.children[i];
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed;

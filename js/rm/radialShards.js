@@ -1,5 +1,5 @@
-function addShards(numItems) {
-    console.log("addShards("+numItems+"):  v.6");
+function addShards(numItems, container) {
+    console.log("addShards("+numItems+"):  v.7");
 
     var numSprites = numItems;
 
@@ -41,7 +41,7 @@ function addShards(numItems) {
             var theta_z = Math.random() * (Math.PI * 2);
 
             holder.rotation.set(theta_x, theta * i, 0);
-            world.add(holder);
+            container.add(holder);
 
             var mesh = new THREE.Mesh(geometry, material);
 
