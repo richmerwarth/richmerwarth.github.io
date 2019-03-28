@@ -193,6 +193,7 @@
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
                     holder.children[n].position.x = holder.radius * params.speed;
+                    holder.children[n].scale.x = params.speed;
                 }
             }
 
