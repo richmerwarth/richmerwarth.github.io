@@ -22,16 +22,7 @@ function addShards(numItems, container) {
         //     wireframe: false
         // });
 
-        var material = new THREE.MeshBasicMaterial({
-            color: yellow,
-            specular: offwhite,
-            shininess: 100,
-            flatShading: true,
-            // side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 1.0,
-            wireframe: false
-        });
+        
 
         console.log(colors);
 
@@ -43,8 +34,21 @@ function addShards(numItems, container) {
             holder.name = "holder" + i;
 
             var myColor = colors[Math.floor(Math.random()*colors.length)];
-            console.log(myColor);
+            // console.log(myColor + ": " + material.color);
             // material.color = myColor;
+            
+            var material = new THREE.MeshBasicMaterial({
+                color: myColor,
+                specular: offwhite,
+                shininess: 100,
+                flatShading: true,
+                // side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 1.0,
+                wireframe: false
+            });
+
+
 
             holder.rot_x = Math.random() / 200;
             holder.rot_y = Math.random() / 200;
