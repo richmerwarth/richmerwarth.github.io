@@ -22,6 +22,17 @@ function addShards(numItems, container) {
             wireframe: false
         });
 
+        var material = new THREE.MeshBasicMaterial({
+            color: yellow,
+            specular: offwhite,
+            shininess: 100,
+            flatShading: true,
+            // side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 1.0,
+            wireframe: false
+        });
+
 
         geometry.computeFaceNormals();
 
