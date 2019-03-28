@@ -36,8 +36,8 @@ function addShards(numItems, container) {
             var myColor = colors[Math.floor(Math.random()*colors.length)];
             // console.log(myColor + ": " + material.color);
             // material.color = myColor;
-            
-            var material = new THREE.MeshBasicMaterial({
+
+            var material = new THREE.MeshPhongMaterial({
                 color: myColor,
                 specular: offwhite,
                 shininess: 100,
