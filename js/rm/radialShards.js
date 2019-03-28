@@ -46,7 +46,7 @@ function addShards(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            var radius = Math.random() * 40 + 5;
+            var radius = Math.random() * 60 + 5;
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
