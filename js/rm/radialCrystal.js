@@ -14,7 +14,7 @@ function addCrystals(numItems, container) {
     loader.load('obj/crystals/crystal_01.stl', function (geometry) {
 
         var material = new THREE.MeshPhongMaterial({
-            color: offwhite,
+            color: realblack,
             specular: offwhite,
             shininess: 80,
             flatShading: true,
