@@ -20,7 +20,7 @@ function addCrystals(numItems, container) {
             flatShading: true,
             side: THREE.DoubleSide,
             transparent: true,
-            opacity: 0.8,
+            opacity: 0.9,
             wireframe: false
         });
 

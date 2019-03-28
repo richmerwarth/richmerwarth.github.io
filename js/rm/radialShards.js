@@ -16,9 +16,9 @@ function addShards(numItems, container) {
             specular: offwhite,
             shininess: 80,
             flatShading: true,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.66,
+            // side: THREE.DoubleSide,
+            transparent: false,
+            opacity: 1,
             wireframe: false
         });
 
