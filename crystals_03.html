@@ -105,8 +105,8 @@
             console.log("init()");
 
             addLights();
-            addCrystals(8, crystals);
-            addShards(64, shards);
+            addCrystals(1, crystals);
+            addShards(3, shards);
             initTween();
         }
 
@@ -188,7 +188,11 @@
             for (i in shards.children) {
                 var holder = shards.children[i];
 
-                holder.mesh.position.set(holder.radius*params.speed, 0, 0);
+                for(var n in holder){
+                    console.log(n);
+                }
+
+                // holder.mesh.position.set(holder.radius*params.speed, 0, 0);
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
