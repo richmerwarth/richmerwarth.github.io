@@ -1,5 +1,5 @@
 function addShards(numItems) {
-    console.log("addShards("+numItems+"):  v.4");
+    console.log("addShards("+numItems+"):  v.5");
 
     var numSprites = numItems;
 
