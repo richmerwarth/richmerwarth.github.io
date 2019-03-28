@@ -26,6 +26,7 @@ function addShards(numItems, container) {
         geometry.computeFaceNormals();
 
         for (var i = 0; i < numSprites; i++) {
+
             var holder = new THREE.Object3D();
             holder.name = "holder" + i;
 
@@ -46,8 +47,8 @@ function addShards(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            var radius = Math.random() * 60 + 5;
-            mesh.position.set(radius, 0, 0);
+            holder.radius = Math.random() * 60 + 5;
+            mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
             var thickness = 0.05 + Math.random() * 0.1;
