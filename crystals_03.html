@@ -62,7 +62,7 @@
         var bgcolor = mint;
 
         var params = new THREE.Object3D();
-        params.speed = 0.01;
+        params.speed = 0.0;
 
 
 
@@ -153,9 +153,9 @@
 
 
         function initTween(){
-            TweenMax.to(params, 3.0, {
-                    speed: 0,
-                    ease: Quad.easeInOut,
+            TweenMax.to(params, 2.0, {
+                    speed: 1.0,
+                    ease: Sine.easeInOut,
                     delay: 0,
                     repeat: -1,
                     repeatDelay: 0.0,
@@ -169,7 +169,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            crystals.rotation.y += params.speed;
+            crystals.rotation.y += 0.05 * params.speed;
             // crystals.rotation.x -= 0.003;
 
             for (i in crystals.children) {
@@ -180,7 +180,7 @@
                 }
             }
 
-            shards.rotation.y += params.speed;
+            shards.rotation.y += 0.05 * params.speed;
             // shards.rotation.x -= 0.003;
 
 
