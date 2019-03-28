@@ -1,5 +1,5 @@
 function addShards(numItems) {
-    console.log("addShards("+numItems+"):  v.5");
+    console.log("addShards("+numItems+"):  v.6");
 
     var numSprites = numItems;
 
@@ -51,7 +51,7 @@ function addShards(numItems) {
             mesh.rotation.x = theta_x;
 
             var thickness = 0.1 + Math.random() * 0.25;
-            var length = 0.5 + Math.random() * 0.25;
+            var length = 0.5 + Math.random() * 0.75;
             mesh.scale.set(length, thickness, thickness);
 
             mesh.castShadow = false;
