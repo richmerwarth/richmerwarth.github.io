@@ -33,7 +33,8 @@ function addShards(numItems, container) {
             wireframe: false
         });
 
-
+        console.log(colors);
+        
         geometry.computeFaceNormals();
 
         for (var i = 0; i < numSprites; i++) {
