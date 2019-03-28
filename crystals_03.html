@@ -176,7 +176,7 @@
                 var holder = crystals.children[i];
 
                 for (n in holder.children) {
-                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
                 }
             }
 
@@ -188,7 +188,7 @@
                 var holder = shards.children[i];
 
                 for (n in holder.children) {
-                    holder.children[n].rotation.x -= holder.children[n].spinSpeed;
+                    holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
                 }
             }
 
