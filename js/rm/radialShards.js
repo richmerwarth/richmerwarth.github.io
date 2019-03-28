@@ -1,5 +1,5 @@
 function addShards(numItems, container) {
-    console.log("addShards("+numItems+"):  v.7");
+    console.log("addShards("+numItems+"):  v.8");
 
     var numSprites = numItems;
 
@@ -46,11 +46,11 @@ function addShards(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            var radius = Math.random() * 30 + 20;
+            var radius = Math.random() * 30 + 10;
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.025 + Math.random() * 0.5;
+            var thickness = 0.01 + Math.random() * 0.25;
             var length = 0.5 + Math.random() * 0.75;
             mesh.scale.set(length, thickness, thickness);
 
