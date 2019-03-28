@@ -48,12 +48,12 @@ function addCrystals(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            holder.radius = Math.random() * 30 + 10;
+            holder.radius = Math.random() * 60 + 10;
             mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.33 + Math.random() * 0.33;
-            var length = 0.75 + Math.random() * 1.5;
+            var thickness = 0.33 + Math.random() * 0.66;
+            var length = 0.5 + Math.random() * 1.0;
             // mesh.scale.set(length, thickness, thickness);
             mesh.scale.set(length, thickness, thickness);
 
