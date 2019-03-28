@@ -34,7 +34,7 @@ function addShards(numItems, container) {
         });
 
         console.log(colors);
-        
+
         geometry.computeFaceNormals();
 
         for (var i = 0; i < numSprites; i++) {
@@ -42,7 +42,8 @@ function addShards(numItems, container) {
             var holder = new THREE.Object3D();
             holder.name = "holder" + i;
 
-            // var myColor = colors[Math.floor(Math.random()*colors.length)];
+            var myColor = colors[Math.floor(Math.random()*colors.length)];
+            console.log(myColor);
             // material.color = myColor;
 
             holder.rot_x = Math.random() / 200;
