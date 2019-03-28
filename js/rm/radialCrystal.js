@@ -16,7 +16,7 @@ function addCrystals(numItems, container) {
         var material = new THREE.MeshPhongMaterial({
             color: mint,
             specular: offwhite,
-            shininess: 80,
+            shininess: 100,
             flatShading: true,
             side: THREE.DoubleSide,
             transparent: true,

@@ -14,7 +14,7 @@ function addShards(numItems, container) {
         var material = new THREE.MeshPhongMaterial({
             color: yellow,
             specular: offwhite,
-            shininess: 80,
+            shininess: 100,
             flatShading: true,
             // side: THREE.DoubleSide,
             transparent: true,

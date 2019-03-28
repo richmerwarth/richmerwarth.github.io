@@ -41,7 +41,7 @@
 
     <script>
 
-        console.log("crystals: v.4");
+        console.log("crystals: v.5");
         // Establish basics:
 
         var coral = 0xd15145;
@@ -124,7 +124,7 @@
 
             point1 = new THREE.PointLight(coral, 1.0, 0);
 
-            point1.position.set(0, 300, -300);
+            point1.position.set(0, 300, 0);
 
             point1.castShadow = false;
 
@@ -132,7 +132,7 @@
 
             ////////
 
-            point2 = new THREE.PointLight(yellow, 0.5, 0);
+            point2 = new THREE.PointLight(yellow, 1.0, 0);
 
             point2.position.set(200, 100, 150);
 
@@ -141,9 +141,9 @@
 
             ////////
 
-            point3 = new THREE.PointLight(mint, 0.5, 0);
+            point3 = new THREE.PointLight(mint, 1.0, 0);
 
-            point3.position.set(-200, -100, 0);
+            point3.position.set(-200, -100, 25);
 
             scene.add(point3);
 
