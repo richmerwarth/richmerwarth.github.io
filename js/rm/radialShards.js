@@ -46,11 +46,11 @@ function addShards(numItems) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            var radius = Math.random() * 15 + 20;
+            var radius = Math.random() * 30 + 20;
             mesh.position.set(radius, 0, 0);
             mesh.rotation.x = theta_x;
 
-            var thickness = 0.25 + Math.random() * 0.10;
+            var thickness = 0.1 + Math.random() * 0.25;
             var length = 0.5 + Math.random() * 0.25;
             mesh.scale.set(length, thickness, thickness);
 
