@@ -62,14 +62,12 @@
         var bgcolor = mint;
 
         var params = new THREE.Object3D();
-        params.speed = 0.0;
 
 
 
 
         var scene = new THREE.Scene();
         scene.background = new THREE.Color(bgcolor);
-
         scene.fog = new THREE.Fog(bgcolor, 250, 500);
 
         var crystals = new THREE.Object3D;
@@ -154,8 +152,8 @@
 
         function initTween(){
             params.speed = 0.05;
-            
-            TweenMax.to(params, 1.5, {
+
+            TweenMax.to(params, 0.66, {
                     speed: 1.0,
                     ease: Quad.easeInOut,
                     delay: 0,
