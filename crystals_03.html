@@ -41,7 +41,7 @@
 
     <script>
 
-        console.log("crystals: v.3");
+        console.log("crystals: v.4");
         // Establish basics:
 
         var coral = 0xd15145;
@@ -109,6 +109,7 @@
             addLights();
             addCrystals(8, crystals);
             addShards(64, shards);
+            initTween();
         }
 
         ////////////////////////////////////////////////////////
@@ -151,7 +152,16 @@
         }
 
 
-
+        function initTween(){
+            TweenMax.to(params, 1.0, {
+                    speed: 0,
+                    ease: Quad.easeInOut,
+                    delay: 0,
+                    repeat: -1,
+                    repeatDelay: 0.0,
+                    yoyo: true
+                });
+        }
 
 
 
