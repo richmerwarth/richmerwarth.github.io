@@ -82,10 +82,10 @@
         ////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////
 
-        var camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.x = 0;
         camera.position.y = 50;
-        camera.position.z = 250;
+        camera.position.z = 200;
 
         camera.lookAt(scene.position);
 
@@ -105,7 +105,7 @@
             console.log("init()");
 
             addLights();
-            addCrystals(9, crystals);
+            addCrystals(24, crystals);
             addShards(128, shards);
             initTween();
         }
