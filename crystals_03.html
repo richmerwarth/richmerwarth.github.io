@@ -59,7 +59,7 @@
 
         var colors = new Array(offwhite, coral, yellow, mint);
 
-        var bgcolor = mint;
+        var bgcolor = coral;
 
         var params = new THREE.Object3D();
 
@@ -188,14 +188,11 @@
             for (i in shards.children) {
                 var holder = shards.children[i];
 
-                for(var n in holder){
-                    console.log(n);
-                }
-
                 // holder.mesh.position.set(holder.radius*params.speed, 0, 0);
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
+                    holder.children[n].position.x = holder.radius * params.speed;
                 }
             }
 
