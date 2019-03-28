@@ -11,16 +11,16 @@ function addShards(numItems, container) {
     var loader = new THREE.STLLoader();
     loader.load('obj/crystals/shard.stl', function (geometry) {
 
-        var material = new THREE.MeshPhongMaterial({
-            color: yellow,
-            specular: offwhite,
-            shininess: 100,
-            flatShading: true,
-            // side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.5,
-            wireframe: false
-        });
+        // var material = new THREE.MeshPhongMaterial({
+        //     color: yellow,
+        //     specular: offwhite,
+        //     shininess: 100,
+        //     flatShading: true,
+        //     // side: THREE.DoubleSide,
+        //     transparent: true,
+        //     opacity: 0.5,
+        //     wireframe: false
+        // });
 
         var material = new THREE.MeshBasicMaterial({
             color: yellow,
@@ -40,6 +40,9 @@ function addShards(numItems, container) {
 
             var holder = new THREE.Object3D();
             holder.name = "holder" + i;
+
+            var myColor = colors[Math.floor(Math.random()*colors.length)];
+            material.color = myColor;
 
             holder.rot_x = Math.random() / 200;
             holder.rot_y = Math.random() / 200;
