@@ -12,7 +12,7 @@ function addShards(numItems) {
     loader.load('obj/crystals/shard.stl', function (geometry) {
 
         var material = new THREE.MeshPhongMaterial({
-            color: offwhite,
+            color: yellow,
             specular: offwhite,
             shininess: 80,
             flatShading: true,
