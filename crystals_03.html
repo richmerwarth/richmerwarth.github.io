@@ -105,7 +105,7 @@
             console.log("init()");
 
             addLights();
-            addCrystals(6, crystals);
+            addCrystals(9, crystals);
             addShards(256, shards);
             initTween();
         }
@@ -169,7 +169,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            crystals.rotation.y += 0.01 * params.speed;
+            crystals.rotation.y += 0.005 * params.speed;
             crystals.rotation.x += 0.005 * params.speed;
             // crystals.rotation.x -= 0.01 * params.speed;
 
@@ -178,11 +178,11 @@
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
-                    holder.children[n].position.x = 15 + holder.radius * params.speed * 1.5;
+                    holder.children[n].position.x = 15 + holder.radius * params.speed;
                 }
             }
 
-            shards.rotation.y += 0.01 * params.speed;
+            shards.rotation.y += 0.005 * params.speed;
             shards.rotation.x += 0.005 * params.speed;
             // shards.rotation.x -= 0.006 * params.speed;
             // shards.rotation.z += 0.01 * params.speed;
