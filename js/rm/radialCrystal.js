@@ -18,7 +18,7 @@ function addCrystals(numItems, container) {
             specular: offwhite,
             shininess: 80,
             flatShading: true,
-            // side: THREE.DoubleSide,
+            side: THREE.DoubleSide,
             transparent: true,
             opacity: 0.8,
             wireframe: false
