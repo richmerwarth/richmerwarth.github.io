@@ -170,6 +170,7 @@
             requestAnimationFrame(animate);
 
             crystals.rotation.y += 0.05 * params.speed;
+            crystals.rotation.x += 0.02 * params.speed;
             // crystals.rotation.x -= 0.01 * params.speed;
 
             for (i in crystals.children) {
@@ -182,6 +183,7 @@
             }
 
             shards.rotation.y += 0.05 * params.speed;
+            shards.rotation.x += 0.02 * params.speed;
             // shards.rotation.x -= 0.006 * params.speed;
             // shards.rotation.z += 0.01 * params.speed;
 
