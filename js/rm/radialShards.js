@@ -41,8 +41,8 @@ function addShards(numItems, container) {
             var holder = new THREE.Object3D();
             holder.name = "holder" + i;
 
-            var myColor = colors[Math.floor(Math.random()*colors.length)];
-            material.color = myColor;
+            // var myColor = colors[Math.floor(Math.random()*colors.length)];
+            // material.color = myColor;
 
             holder.rot_x = Math.random() / 200;
             holder.rot_y = Math.random() / 200;
