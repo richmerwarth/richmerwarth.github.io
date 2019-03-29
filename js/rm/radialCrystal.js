@@ -36,14 +36,14 @@ function addCrystals(numItems, container) {
             // console.log(myColor + ": " + material.color);
             // material.color = myColor;
 
-            var material = new THREE.MeshBasicMaterial({
+            var material = new THREE.MeshPhongMaterial({
                 color: myColor,
                 specular: offwhite,
-                shininess: 100,
+                shininess: 15,
                 flatShading: true,
                 // side: THREE.DoubleSide,
-                transparent: false,
-                opacity: 1.0,
+                transparent: true,
+                opacity: 0.9,
                 wireframe: false
             });
 
