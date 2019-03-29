@@ -47,7 +47,7 @@ function addCrystals(numItems, container) {
                 wireframe: false
             });
 
-            
+
 
             holder.rot_x = Math.random() / 200;
             holder.rot_y = Math.random() / 200;
@@ -66,12 +66,12 @@ function addCrystals(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            holder.radius = Math.random() * 60 + 10;
+            holder.radius = Math.random() * 70 + 30;
             mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
             var thickness = 0.33 + Math.random() * 0.66;
-            var length = 0.5 + Math.random() * 1.0;
+            var length = 0.5 + Math.random() * 0.5;
             // mesh.scale.set(length, thickness, thickness);
             mesh.scale.set(length, thickness, thickness);
 
