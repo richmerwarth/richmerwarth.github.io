@@ -11,7 +11,7 @@ function addCrystals(numItems, container) {
     }
 
     var loader = new THREE.STLLoader();
-    loader.load('obj/crystals/crystal_01.stl', function (geometry) {
+    loader.load('obj/crystals/crystal_01b.stl', function (geometry) {
 
         // var material = new THREE.MeshPhongMaterial({
         //     color: mint,
@@ -67,7 +67,7 @@ function addCrystals(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            holder.radius = Math.random() * 70 + 30;
+            holder.radius = Math.random() * 150 + 30;
             mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
