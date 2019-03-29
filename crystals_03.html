@@ -59,7 +59,7 @@
 
         var colors = new Array(_offwhite, _coral, _yellow, _mint);
 
-        var bgcolor = realblack;
+        var bgcolor = mint;
 
         var params = new THREE.Object3D();
 
@@ -185,7 +185,7 @@
 
                 for (n in holder.children) {
                     holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
-                    holder.children[n].position.x = holder.radius * params.speed;
+                    holder.children[n].position.x = holder.radius * (params.speed-0.1);
                 }
             }
 
