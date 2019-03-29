@@ -105,8 +105,8 @@
             console.log("init()");
 
             addLights();
-            addCrystals(80, crystals);
-            addShards(512, shards);
+            addCrystals(32, crystals);
+            addShards(256, shards);
             initTween();
         }
 
@@ -122,7 +122,7 @@
 
         function addLights() {
 
-            point1 = new THREE.PointLight(offwhite, 1.0, 0);
+            point1 = new THREE.PointLight(offwhite, 0.8, 0);
 
             point1.position.set(0, 300, 200);
 
@@ -150,7 +150,7 @@
 
             //////////
 
-            var light = new THREE.AmbientLight( offwhite, 0.5 ); // soft white light
+            var light = new THREE.AmbientLight( offwhite, 0.3 ); // soft white light
             scene.add( light ); 
 
         }
