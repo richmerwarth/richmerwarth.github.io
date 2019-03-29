@@ -37,14 +37,14 @@ function addShards(numItems, container) {
             // console.log(myColor + ": " + material.color);
             // material.color = myColor;
 
-            var material = new THREE.MeshPhongMaterial({
+            var material = new THREE.MeshBasicMaterial({
                 color: myColor,
                 specular: offwhite,
                 shininess: 100,
                 flatShading: true,
                 // side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.66,
+                transparent: false,
+                opacity: 1.0,
                 wireframe: false
             });
 

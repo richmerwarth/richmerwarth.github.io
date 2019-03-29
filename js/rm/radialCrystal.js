@@ -13,16 +13,16 @@ function addCrystals(numItems, container) {
     var loader = new THREE.STLLoader();
     loader.load('obj/crystals/crystal_01.stl', function (geometry) {
 
-        var material = new THREE.MeshPhongMaterial({
-            color: mint,
-            specular: offwhite,
-            shininess: 100,
-            flatShading: true,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.9,
-            wireframe: false
-        });
+        // var material = new THREE.MeshPhongMaterial({
+        //     color: mint,
+        //     specular: offwhite,
+        //     shininess: 100,
+        //     flatShading: true,
+        //     side: THREE.DoubleSide,
+        //     transparent: true,
+        //     opacity: 0.9,
+        //     wireframe: false
+        // });
 
 
         geometry.computeFaceNormals();
@@ -30,6 +30,24 @@ function addCrystals(numItems, container) {
         for (var i = 0; i < numSprites; i++) {
             var holder = new THREE.Object3D();
             holder.name = "holder" + i;
+
+
+            var myColor = colors[Math.floor(Math.random()*colors.length)];
+            // console.log(myColor + ": " + material.color);
+            // material.color = myColor;
+
+            var material = new THREE.MeshBasicMaterial({
+                color: myColor,
+                specular: offwhite,
+                shininess: 100,
+                flatShading: true,
+                // side: THREE.DoubleSide,
+                transparent: false,
+                opacity: 1.0,
+                wireframe: false
+            });
+
+            
 
             holder.rot_x = Math.random() / 200;
             holder.rot_y = Math.random() / 200;
