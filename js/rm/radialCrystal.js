@@ -79,7 +79,11 @@ function addCrystals(numItems, container) {
             mesh.receiveShadow = false;
 
             mesh.name = "crystal_"+i;
-            mesh.spinSpeed = 0.1;
+            mesh.spinSpeed = 0.08 + Math.random()*0.05;
+
+            if(Math.random()>=0.5){
+                mesh.spinSpeed *= -1;
+            }
 
             holder.add(mesh);
 
