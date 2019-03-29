@@ -40,7 +40,7 @@ function addCrystals(numItems, container) {
                 // color: myColor,
                 color: black,
                 specular: offwhite,
-                shininess: 0,
+                shininess: 5,
                 flatShading: true,
                 // side: THREE.DoubleSide,
                 transparent: true,
