@@ -67,19 +67,20 @@ function addCones(numItems, container) {
             var mesh = new THREE.Mesh(geometry, material);
 
 
-            holder.radius = Math.random() * 200 + 30;
+            holder.radius = Math.random() * 100 + 30;
+            // holder.radius = 100;
             mesh.position.set(holder.radius, 0, 0);
             mesh.rotation.x = theta_x;
 
             // var thickness = 0.33 + Math.random() * 0.66;
             // var length = 0.5 + Math.random() * 0.1;
-            mesh.scale.set(0.2, 0.5, 0.5);
+            mesh.scale.set(4, 0.05, 0.05);
 
             mesh.castShadow = false;
             mesh.receiveShadow = false;
 
             mesh.name = "cone_"+i;
-            mesh.spinSpeed = 0.1 + Math.random()*0.05;
+            mesh.spinSpeed = 0.01 + Math.random()*0.05;
 
             if(Math.random()>=0.5){
                 mesh.spinSpeed *= -1;

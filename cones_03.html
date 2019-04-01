@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> rich merwarth | richmerwarth.github.io </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
+    <meta property="og:site_name" content="rich merwarth | richmerwarth.github.io" />
+    <meta property="og:title" content="rich merwarth | richmerwarth.github.io" />
+    <meta property="og:url" content="https://richmerwarth.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta itemprop="name" content="rich merwarth | richmerwarth.github.io" />
+    <meta itemprop="url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:title" content="rich merwarth | richmerwarth.github.io" />
+    <meta name="twitter:url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="description" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+
+<body>
+    <script src="js/three.js"></script>
+    <script src="js/loaders/STLLoader.js"></script>
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+    <script src="GSAP_src/minified/plugins/ColorPropsPlugin.min.js"></script>
+
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+
+    <script src="js/rm/radialCones_03.js"></script>
+    <!-- <script src="js/rm/radialShards.js"></script> -->
+
+
+    <script>
+
+        console.log("cones: v.1");
+        // Establish basics:
+
+        var coral = 0xd15145;
+        var yellow = 0xf0bc4d;
+        var mint = 0xa3cfbd;
+        var offwhite = 0xf7f7f2;
+        var black = 0x26201e;
+        var realblack = 0x000000;
+
+        var _coral = '#d15145';
+        var _yellow = '#f0bc4d';
+        var _mint = '#a3cfbd';
+        var _offwhite = '#f7f7f2';
+        var _black = '#26201e';
+
+        var colors = new Array(_offwhite, _mint, coral, _yellow);
+
+        var bgcolor = black;
+
+        var params = new THREE.Object3D();
+
+
+
+
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color(bgcolor);
+        scene.fog = new THREE.Fog(bgcolor, 100, 500);
+
+        var cones = new THREE.Object3D;
+        cones.name = "cones";
+        scene.add(cones);
+
+        // var shards = new THREE.Object3D;
+        // shards.name = "shards";
+        // scene.add(shards);
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.x = 0;
+        camera.position.y = 50;
+        camera.position.z = 180;
+
+        camera.lookAt(scene.position);
+
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false
+        });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        function init() {
+            console.log("init()");
+
+            addLights();
+            addCones(1024, cones);
+            // addShards(64, shards);
+            initTween();
+        }
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        function recolor(target) {
+            target.material.color.set(target.currentColor);
+        }
+
+
+
+        function addLights() {
+
+            point1 = new THREE.PointLight(coral, 1.0, 0);
+
+            point1.position.set(0, 500, 500);
+
+            point1.castShadow = false;
+
+            scene.add(point1);
+
+            ////////
+
+            point2 = new THREE.PointLight(coral, 0.5, 0);
+
+            point2.position.set(200, 100, -150);
+
+            // scene.add(point2);
+
+
+            ////////
+
+            point3 = new THREE.PointLight(mint, 1, 0);
+
+            point3.position.set(0, 0, 0);
+
+            scene.add(point3);
+
+
+            //////////
+
+            var light = new THREE.AmbientLight( offwhite, 0.3 ); // soft white light
+            // scene.add( light ); 
+
+        }
+
+
+        function initTween(){
+            params.speed = 0.05;
+
+            TweenMax.to(params, 5.0, {
+                    speed: 1,
+                    ease: Quad.easeInOut,
+                    delay: 0,
+                    repeat: -1,
+                    repeatDelay: 0.0,
+                    yoyo: true
+                });
+        }
+
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cones.rotation.y += 0.001 * params.speed;
+            cones.rotation.x += 0.0005 * params.speed;
+            cones.rotation.z += 0.02 * params.speed;
+            // cones.rotation.z += 0.005 * params.speed;
+            // cones.rotation.x -= 0.01 * params.speed;
+
+            for (i in cones.children) {
+                var holder = cones.children[i];
+                
+                // var scaleVal = Math.pow(params.speed, 1);
+                // holder.scale.set( scaleVal, scaleVal, scaleVal );
+
+                for (n in holder.children) {
+                    // holder.children[n].rotation.x -= holder.children[n].spinSpeed * params.speed;
+                    // holder.children[n].rotation.y = Math.PI * params.speed;
+                    holder.children[n].position.x = 10 + holder.radius * ((params.speed-0.05) *2);
+                    holder.children[n].scale.x = -0.001 - ((params.speed-0.05) * 3);
+                    holder.children[n].scale.y = holder.children[n].scale.z = 0.2 - (params.speed*0.0);
+                }
+            }
+
+
+            // cones.position.x = -100 + 200*params.speed;
+
+
+
+            renderer.render(scene, camera);
+        }
+
+
+        init();
+        animate();
+    </script>
+</body>
+
+</html>
