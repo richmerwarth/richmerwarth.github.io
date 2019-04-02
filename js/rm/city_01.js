@@ -4,11 +4,11 @@ function makeMeshes(geometries, meshes, callback) {
     for (var item in geometries) {
         var geom = geometries[item];
 
+        geom.computeFaceNormals();
 
-
-        var material = new THREE.MeshLambertMaterial({
-            color: offwhite,
-            specular: offwhite,
+        var material = new THREE.MeshPhongMaterial({
+            color: 0xFFFFFF,
+            specular: 0xFFFFFF,
             shininess: 100,
             flatShading: true,
             side: THREE.DoubleSide,
@@ -38,6 +38,8 @@ function addBuilding(container, meshes, pos){
     // ///
     
     var mesh = meshes[Math.floor(Math.random() * meshes.length)].clone();
+
+    //var mesh = meshes[2].clone();
     
     
     holder.add(mesh);
@@ -54,11 +56,24 @@ function addBuilding(container, meshes, pos){
     holder.position.z = basez + pos.z;
 
 
-    mesh.scale.set(1, 0.5 + Math.random()*2, 1);
+    mesh.scale.set(1, 1.0 + Math.random(), 1);
 
-    // holder.rotation.y = ;
+
+    // var geometry = new THREE.CylinderGeometry( 1, 1, 100, 8 );
+    // var material = new THREE.MeshPhongMaterial( {color: 0xffffff} );
+    // var bar = new THREE.Mesh( geometry, material );
+    // bar.position.y += 50;
+    // holder.add( bar );
+
+    var quad = Math.floor(Math.random()*4);
+    
+    holder.rotation.y = quad * Math.PI/2;
+
 
     container.add(holder);
+
+
+
 
         
     // var mesh = meshes[Math.floor(Math.random() * meshes.length)];
