@@ -56,7 +56,7 @@ function addBuilding(container, meshes, pos){
     holder.position.z = basez + pos.z;
 
 
-    mesh.scale.set(1, 1.0 + Math.random(), 1);
+    mesh.scale.set(1, 1.0 + Math.random()*1.5, 1);
 
 
     // var geometry = new THREE.CylinderGeometry( 1, 1, 100, 8 );

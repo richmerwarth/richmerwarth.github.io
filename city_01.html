@@ -76,8 +76,8 @@
         var meshes = new Array();
 
         var cityParams = {
-            rows: 12,
-            columns: 12,
+            rows: 20,
+            columns: 20,
             spacing: 24,
             yOffset: -40
         };
@@ -264,7 +264,7 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            city.rotation.y += 0.001;
+            // city.rotation.y += 0.003;
             // camera.lookAt(0,10,0);
 
             controls.update();
