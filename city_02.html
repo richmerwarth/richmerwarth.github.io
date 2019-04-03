@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> rich merwarth | richmerwarth.github.io </title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://richmerwarth.github.io/favicon.ico" />
+    <meta property="og:site_name" content="rich merwarth | richmerwarth.github.io" />
+    <meta property="og:title" content="rich merwarth | richmerwarth.github.io" />
+    <meta property="og:url" content="https://richmerwarth.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta itemprop="name" content="rich merwarth | richmerwarth.github.io" />
+    <meta itemprop="url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:title" content="rich merwarth | richmerwarth.github.io" />
+    <meta name="twitter:url" content="https://richmerwarth.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="description" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+
+<body>
+    <script src="js/three.js"></script>
+    <script src="js/loaders/STLLoader.js"></script>
+
+    <script src="js/controls/OrbitControls.js"></script>
+        
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+    <script src="GSAP_src/minified/plugins/ColorPropsPlugin.min.js"></script>
+
+    <script src="GSAP_src/minified/TweenMax.min.js"></script>
+
+    <script src="js/rm/util/loadSTLs.js"></script>
+    <script src="js/rm/city_02.js"></script>
+    <!-- <script src="js/rm/radialShards.js"></script> -->
+
+
+    <script>
+        console.log("city: v.2");
+        // Establish basics:
+
+        var coral = 0xd15145;
+        var yellow = 0xf0bc4d;
+        var mint = 0xa3cfbd;
+        var offwhite = 0xf7f7f2;
+        var black = 0x26201e;
+        var realblack = 0x000000;
+
+        var _coral = '#d15145';
+        var _yellow = '#f0bc4d';
+        var _mint = '#a3cfbd';
+        var _offwhite = '#f7f7f2';
+        var _black = '#26201e';
+
+        var colors = new Array(_offwhite, _coral, _mint, _black, _yellow);
+
+        var bgcolor = realblack;
+
+
+
+        var models = new Array('obj/city/bauhaus-city_0.stl', 'obj/city/bauhaus-city_1.stl', 'obj/city/bauhaus-city_2.stl', 'obj/city/bauhaus-city_3.stl', 'obj/city/bauhaus-city_4.stl', 'obj/city/bauhaus-city_5.stl', 'obj/city/bauhaus-city_6.stl', 'obj/city/bauhaus-city_7.stl', 'obj/city/bauhaus-city_8.stl', 'obj/city/bauhaus-city_9.stl');
+        
+        // var models = new Array('obj/city/city_01.stl', 'obj/city/city_02.stl', 'obj/city/city_03.stl',
+        //     'obj/city/city_04.stl', 'obj/city/city_05.stl', 'obj/city/city_06.stl', 'obj/city/city_07.stl',
+        //     'obj/city/city_08.stl', 'obj/city/city_09.stl', 'obj/city/city_10.stl');
+        
+        var geometries = new Array();
+        var meshes = new Array();
+
+        var cityParams = {
+            rows: 16,
+            columns: 16,
+            spacing: 20,
+            yOffset: -40
+        };
+
+
+
+
+        var scene = new THREE.Scene();
+        scene.background = new THREE.Color(bgcolor);
+        // scene.fog = new THREE.Fog(bgcolor, 150, 250);
+
+        var city = new THREE.Object3D();
+        scene.add(city);
+
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        
+        var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.x = -40;
+        camera.position.y = 140;
+        camera.position.z = 300;
+        
+        camera.lookAt(scene.position);
+        
+        var renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false
+        });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        var controls = new THREE.OrbitControls( camera );
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        function init() {
+            console.log("init()");
+
+            loadSTLs(models, geometries, loadComplete);
+
+        }
+
+        function loadComplete() {
+            console.log("loadComplete()");
+            makeMeshes(geometries, meshes, buildCity);
+        }
+
+
+        function buildCity() {
+            addLights();
+            console.log("buildCity()");
+
+
+            // city.position.x = 0- ((cityParams.columns-1)/2 * cityParams.spacing);
+            // city.position.z = 0- ((cityParams.rows-1)/2 * cityParams.spacing);
+
+            var n = 0;
+            var p = 0;
+
+            while (n < cityParams.columns) {
+                while (p < cityParams.rows) {
+                    //do stuff here!
+                    var pos = {
+                        x: n * cityParams.spacing,
+                        y: 0,
+                        z: p * cityParams.spacing
+                    }
+
+                    addBuilding(city, meshes, pos);
+                    console.log(n + ", " + p);
+                    p++;
+                }
+                p = 0;
+                n++;
+            }
+
+
+
+
+            console.log(city.children);
+            addGround();
+            // initTweens();
+
+        }
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+        function recolor(target, color) {
+            target.material.color.set(target.currentColor);
+        }
+
+
+        function addGround(){
+            //var geometry = new THREE.BoxGeometry( 300, 20, 300 );
+            var geometry = new THREE.CylinderGeometry( 500, 500, 10, 64 );
+            var material = new THREE.MeshPhongMaterial( {
+                color: 0x333333,
+                shininess: 30
+            } );
+                var cube = new THREE.Mesh( geometry, material );
+            cube.position.y -= 5;
+            city.add( cube );
+
+        }
+
+
+
+        function addLights() {
+
+            console.log("addLights()");
+
+            var spot1 = new THREE.SpotLight( 0xffffff );
+            spot1.distance = 0;
+            spot1.angle = Math.PI/4;
+            spot1.decay = 0;
+            spot1.penumbra = 0.5;
+            spot1.position.set( 100, 300, 300 );
+            scene.add( spot1 );
+
+            // var spot1Helper = new THREE.SpotLightHelper( spot1 );
+            // scene.add( spot1Helper );
+
+
+
+            var spot2 = new THREE.SpotLight( mint );
+            spot2.distance = 0;
+            spot2.angle = Math.PI/4;
+            spot2.decay = 0;
+            spot2.penumbra = 0.5;
+            spot2.position.set( -200, 200, -300 );
+            scene.add( spot2 );
+
+            // var spot2Helper = new THREE.SpotLightHelper( spot2 );
+            // scene.add( spot2Helper );
+
+
+
+            var spot3 = new THREE.SpotLight( yellow );
+            spot3.distance = 0;
+            spot3.angle = Math.PI/4;
+            spot3.decay = 0;
+            spot3.penumbra = 0.5;
+            spot3.position.set( 200, 200, -300 );
+            scene.add( spot3 );
+
+            // var spot3Helper = new THREE.SpotLightHelper( spot3 );
+            // scene.add( spot3Helper );
+
+
+
+        }
+
+
+        function initTweens() {
+            console.log("initTweens()");
+            //animation:
+            var t = 0.0;
+
+            TweenMax.to(camera.position, 10.0, {
+                y: 20.0,
+                ease: Quad.easeInOut,
+                delay: t,
+                repeat: -1,
+                repeatDelay: 0.0,
+                yoyo: true
+            });
+
+
+        }
+
+
+        // animate:
+        function animate() {
+            requestAnimationFrame(animate);
+
+            city.rotation.y += 0.003;
+            // camera.lookAt(0,10,0);
+
+            controls.update();
+
+            renderer.render(scene, camera);
+        }
+
+
+        init();
+        animate();
+    </script>
+</body>
+
+</html>
