@@ -5,6 +5,7 @@ body {
   font-weight: 300;
   line-height: 24px;
   color: #f7f7f2;
+  overflow: hidden;
 }
 
 .nav {

@@ -6,13 +6,13 @@ function makeMeshes(geometries, meshes, callback) {
 
       geom.computeFaceNormals();
 
-      var material = new THREE.MeshBasicMaterial({
-          color: yellow,
-          specular: 0xFFFFFF,
+      var material = new THREE.MeshPhongMaterial({
+          color: offwhite,
+          specular: 0xffffff,
           shininess: 0,
           flatShading: true,
-          side: THREE.DoubleSide,
-          transparent: true,
+          // side: THREE.FrontSide,
+          transparent: false,
           opacity: 1.0,
           wireframe: false
       });
@@ -22,14 +22,14 @@ function makeMeshes(geometries, meshes, callback) {
       meshes.push(mesh);
   }
 
-  console.log(meshes);
+  // console.log(meshes);
   callback();
 }
 
 
 function addBuilding(container, meshes, pos){
   console.log("addBuilding()");
-  console.log(container);
+  // console.log(container);
 
   var holder = new THREE.Object3D();
   holder.name = "bldg";
@@ -48,15 +48,15 @@ function addBuilding(container, meshes, pos){
   // holder.children[0].material.color.set(myColor);
 
 
-  var basex = 0- ((cityParams.columns-1)/2 * cityParams.spacing);
-  var basez = 0- ((cityParams.rows-1)/2 * cityParams.spacing);
+  // var basex = 0- ((cityParams.columns-1)/2 * cityParams.spacing);
+  // var basez = 0- ((cityParams.rows-1)/2 * cityParams.spacing);
 
-  // var basex = 0;
-  // var basez = 0;
+  var basex = 0;
+  var basez = 0;
 
-  holder.position.x = basex + pos.x;
+  holder.position.x = pos.x;
   holder.position.y = pos.y;
-  holder.position.z = basez + pos.z;
+  holder.position.z = pos.z;
 
 
   mesh.scale.set(1, 5, 1);

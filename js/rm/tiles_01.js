@@ -7,7 +7,7 @@ function makeMeshes(geometries, meshes, callback) {
       geom.computeFaceNormals();
 
       var material = new THREE.MeshBasicMaterial({
-          color: yellow,
+          color: black,
           specular: 0xFFFFFF,
           shininess: 0,
           flatShading: true,
@@ -48,15 +48,15 @@ function addBuilding(container, meshes, pos){
   // holder.children[0].material.color.set(myColor);
 
 
-  var basex = 0- ((cityParams.columns-1)/2 * cityParams.spacing);
-  var basez = 0- ((cityParams.rows-1)/2 * cityParams.spacing);
+  // var basex = 0- ((cityParams.columns-1)/2 * cityParams.spacing);
+  // var basez = 0- ((cityParams.rows-1)/2 * cityParams.spacing);
 
-  // var basex = 0;
-  // var basez = 0;
+  var basex = 0;
+  var basez = 0;
 
-  holder.position.x = basex + pos.x;
+  holder.position.x = pos.x;
   holder.position.y = pos.y;
-  holder.position.z = basez + pos.z;
+  holder.position.z = pos.z;
 
 
   mesh.scale.set(1, 5, 1);
